@@ -8,3 +8,25 @@
 //     padding: 0;
 //     color: red;
 // }
+
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+  }
+  .navbar-brand .navbar-item {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .navbar-menu {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .navbar-item {
+    margin-left: 1rem;
+    color: #fff;
+    text-decoration: none;
+  }
+  .navbar-item:hover {
+    text-decoration: underline;
+  }
