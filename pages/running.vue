@@ -4,18 +4,18 @@
     <nuxt-link to="/" class="absolute top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-md shadow-md">
       Retour à l'accueil
     </nuxt-link></div>  
-    <p>Bienvenue sur la page dédiée au rugby !</p>
+    <p>Bienvenue sur la page dédiée au running !</p>
     <div class="info">
       <h2>Informations</h2>
-      <p><strong>Responsable :</strong> Alexandre </p>
+      <p><strong>Responsables :</strong> Juliette et Emile </p>
       <p><strong>Jours et Horaires :</strong></p>
       <ul>
-        <li>Jeudi : 17h00 - 19h00</li>
+        <li>Dimanche : 10h00 </li>
       </ul>
     </div>
     <div class="location">
       <h2>Lieu</h2>
-      <p> Terrain grillagé Gymnase Yves du manoir, 74 Rue de Turly, 18000 Bourges</p>
+      <p>INSA</p>
       <div id="map"></div>
     </div>
     <nuxt-link to="/">Retour à l'accueil</nuxt-link>
@@ -27,20 +27,20 @@ import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
 export default {
-  name: 'RugbyPage',
+  name: 'RunningPage',
   mounted() {
     this.initMap()
   },
   methods: {
     initMap() {
-      const map = L.map('map').setView([47.0998228, 2.4178353], 13)
+      const map = L.map('map').setView([47.0818877, 2.412969], 13)
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map)
 
-      L.marker([47.0998228, 2.4178353]).addTo(map) 
-        .bindPopup("Gymnase Yves du manoir<br>74 Rue de Turly, 18000 Bourges")
+      L.marker([47.0818877, 2.412969]).addTo(map) 
+        .bindPopup('INSA<br>88 Boulevard Lahitolle, 18000 Bourges')
         .openPopup()
     }
   }
