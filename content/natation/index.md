@@ -2,9 +2,9 @@
 title: "Page dédiée à la natation"
 responsables:   
     responsable:
-        name:
+        name:  'Sylvain Vaukan'
         avatar:
-        email:
+        email: 'sylvain.vaukan@insa-cvl.fr'
     responsable:
         name:
         avatar:
@@ -13,10 +13,10 @@ image: #image cua avion
     link:
     link:
 jours_horaires:
-    jour: 
-    horaires: 
-lieu: 
-coordonnees: 
+    j1:
+        jour: 'Jeudi' 
+        horaires: '13h30 - 14h30'
+lieu: 'Centre Nautique Raymond Boisdé, Place Pierre de Coubertin, 18000 Bourges'
 ---
 
 ## Bienvenue sur la page dédiée au badminton !

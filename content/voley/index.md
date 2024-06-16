@@ -2,21 +2,24 @@
 title: "Page dédiée au voleyball"
 responsables:   
     responsable:
-        name:
+        name: 'Salomé Le Dez'
         avatar:
-        email:
+        email: 'salome.le_dez@insa-cvl.fr'
     responsable:
-        name:
+        name: 'Quentin Descloux'
         avatar:
-        email:
+        email: 'quentin.descloux@insa.fr' 
 image: #image cua avion
     link:
     link:
 jours_horaires:
-    jour: 
-    horaires: 
-lieu: 
-coordonnees: 
+    j1:
+        jour: 'Lundi' 
+        horaires: '18h30 - 20h15'
+    j2:
+        jour: 'Jeudi'
+        horaires: '15h30 - 17h30'
+lieu: 'Gymnase Yves du manoir, 74 Rue de Turly, 18000 Bourges'
 ---
 
 ## Bienvenue sur la page dédiée au badminton !

@@ -2,21 +2,21 @@
 title: "Page dédiée à la running"
 responsables:   
     responsable:
-        name:
+        name:  'Juliette Alzon'
         avatar:
-        email:
+        email:  'juliette.alzon@insa-cvl.fr'
     responsable:
-        name:
+        name: 'Emile Rabache'
         avatar:
-        email:
+        email: 'emile.rabache@insa-cvl.fr'
 image: #image cua avion
     link:
     link:
 jours_horaires:
-    jour: 
-    horaires: 
-lieu: 
-coordonnees: 
+    j1:
+        jour: 'Dimanche' 
+        horaires: '10h'
+lieu: 'INSA CVL'
 ---
 
 ## Bienvenue sur la page dédiée au badminton !

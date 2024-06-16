@@ -2,21 +2,24 @@
 title: "Page dédiée au handball"
 responsables:   
     responsable:
-        name:
+        name:  'Céleste Le Guen'
         avatar:
-        email:
+        email:  'celeste.le_guen@insa.fr'
     responsable:
-        name:
+        name:  'Thomas Mortagne'
         avatar:
-        email:
+        email: 'thomas.mortagne@insa-cvl.fr' 
 image: #image cua avion
     link:
     link:
 jours_horaires:
-    jour: 
-    horaires: 
-lieu: 
-coordonnees: 
+    j1:
+        jour: 'Lundi' 
+        horaires: '20h15 - 22h00'
+    j2:
+        jour: 'Jeudi' 
+        horaires: '20h30 - 22h00'
+lieu: 'Gymnase Yves du manoir, 74 Rue de Turly, 18000 Bourges'
 ---
 
 ## Bienvenue sur la page dédiée au badminton !

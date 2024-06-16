@@ -2,9 +2,9 @@
 title: "Page dédiée au rugby"
 responsables:   
     responsable:
-        name:
+        name: 'Alexandre Desfontaines'
         avatar:
-        email:
+        email: 'alexandre.desfontaines@insa-cvl.fr'
     responsable:
         name:
         avatar:
@@ -13,10 +13,10 @@ image: #image cua avion
     link:
     link:
 jours_horaires:
-    jour: 
-    horaires: 
-lieu: 
-coordonnees: 
+    j1:
+        jour: 'Jeudi'
+        horaires: '17h - 19h'
+lieu: 'Terrain grillagé Gymnase Yves du manoir, 74 Rue de Turly, 18000 Bourges'
 ---
 
 ## Bienvenue sur la page dédiée au badminton !
