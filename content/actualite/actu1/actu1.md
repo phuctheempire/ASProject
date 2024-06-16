@@ -2,9 +2,9 @@
 title: "Actu 1"
 date: 2020-01-01
 description: "Description de l'actualité 1"
-structure:
-    field1: "Field 1"
-    field2: "Field 2"
+list:
+    - field: "Field 1"
+    - field: "Field 2"
 image: "image.jpg"
 ---
 # Hello

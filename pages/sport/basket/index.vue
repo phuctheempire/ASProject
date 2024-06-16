@@ -13,7 +13,13 @@
                 <div v-for="d in data " :key="home">
                     <h1>{{ d.title }}</h1>
                     <p>{{ d.description }}</p>
-                    <p>{{ d.content }}</p>    
+                    <p>{{ d.content }}</p>  
+                    <p>{{ d.structure }}</p>  
+                    <div v-for="(item,index) in d.list" :key="index">
+                        <div v-for="(field, subIndex) in item" :key="subIndex">
+                            <p>{{ field }}</p>
+                        </div>
+                    </div>
                     <h1><ContentRenderer :value="d"></ContentRenderer></h1>
                 </div>
             </div>
