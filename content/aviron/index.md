@@ -1,19 +1,19 @@
 ---
 title: "Page dédiée à l'aviron"
 responsables:   
-    responsable:
+    - responsable:
         name: 'Brice Athey'
         avatar: 
         email: 'brice.athey-fougerouse@insa-cvl.fr'
-    responsable:
+    - responsable:
         name: 'Paul Laurent'
         avatar:
         email: 'paul.laurent@insa-cvl.fr'
 image: #image cua avion
-    link:
-    link:
+    - link:
+    - link:
 jours_horaires:
-    j1:
+    - j:
         jour: "Jeudi "
         horaires: "15h00 - 17h00"
 lieu: "Base d'Aviron Alice Milliat, Chemin du Grand Mazières, 18000 Bourges"

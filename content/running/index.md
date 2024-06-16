@@ -1,19 +1,19 @@
 ---
 title: "Page dédiée à la running"
 responsables:   
-    responsable:
+    - responsable:
         name:  'Juliette Alzon'
         avatar:
         email:  'juliette.alzon@insa-cvl.fr'
-    responsable:
+    - responsable:
         name: 'Emile Rabache'
         avatar:
         email: 'emile.rabache@insa-cvl.fr'
 image: #image cua avion
-    link:
-    link:
+    - link:
+    - link:
 jours_horaires:
-    j1:
+    - j:
         jour: 'Dimanche' 
         horaires: '10h'
 lieu: 'INSA CVL'

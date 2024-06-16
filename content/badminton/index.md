@@ -1,19 +1,19 @@
 ---
 title: "Page dédiée au badminton"
 responsables:   
-    responsable:
+    - responsable:
         name: 'Manon Ducelier'
         avatar:
         email: 'manon.ducelier@insa-cvl.fr'
-    responsable:
+    - responsable:
         name: 'Romane Fouilhe'
         avatar:
         email: 'romane.fouilhe@insa-cvl.fr'
 image: #image cua avion
-    link:
-    link:
+    - link:
+    - link:
 jours_horaires:
-    j1:
+    - j:
         jour: "Jeudi"
         horaires: "15h00 - 17h00"
 lieu: "Gymnase Yves du manoir, 74 Rue de Turly, 18000 Bourges"

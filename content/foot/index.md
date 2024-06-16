@@ -1,19 +1,19 @@
 ---
 title: "Page dédiée au football"
 responsables:   
-    responsable:
+    - responsable:
         name: 'Thibaut Paillat'
         avatar:
         email: 'thibaut.paillat@insa-cvl.fr' 
-    responsable:
+    - responsable:
         name: 'Romain Laye'
         avatar:
         email:  'romain.laye@insa-cvl.fr'
 image: #image cua avion
-    link:
-    link:
+    - link:
+    - link:
 jours_horaires:
-    j1:
+    - j:
         jour: 'Jeudi'
         horaires: '18h - 20h'
 lieu: 'Stade des Bigarelles, 22 Avenue des Dumones, 18000 Bourges'

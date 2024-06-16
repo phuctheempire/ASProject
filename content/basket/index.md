@@ -1,22 +1,22 @@
 ---
 title: "Page dédiée au basketball"
 responsables:   
-    responsable:
+    - responsable:
         name: 'Hugo Leseine-Bescond'
         avatar:
         email: 'hugo.leseine-bescond@insa-cvl.fr' 
-    responsable:
+    - responsable:
         name:
         avatar:
         email:
 image: #image cua avion
-    link:
-    link:
+    - link:
+    - link:
 jours_horaires:
-    j1:
+    - j:
         jour: 'Mardi' 
         horaires:  '21h00 - 22h00'
-    j2:
+    - j:
         jour: 'Mercredi' 
         horaires: '20h00 - 22h00'
 lieu: 'Gymnase Jean Moulin, Rue Jean Moulin, 18000 Bourges'
