@@ -18,7 +18,6 @@
       <p> Terrain grillagé Gymnase Yves du manoir, 74 Rue de Turly, 18000 Bourges</p>
       <div id="map"></div>
     </div>
-    <nuxt-link to="/">Retour à l'accueil</nuxt-link>
   </div>
 </template>
 
@@ -53,9 +52,11 @@ export default {
 }
 
 #map {
-  height: 400px;
-  width: 100%;
+  height: 200px;  
+  width: 50%;    
   margin-top: 20px;
+  margin-left: auto;  
+  margin-right: auto
 }
 
 h1, h2 {
