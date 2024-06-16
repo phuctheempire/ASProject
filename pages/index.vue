@@ -24,14 +24,18 @@
         </ul>
       </nav>
 
-      <section class="news">
+      <div>
         <h2>Actualités</h2>
-        <ul>
-          <li>Nouvelle saison de football commence le 1er septembre</li>
-          <li>Stage de basket cet été</li>
-          <li>Équipe de tennis gagne le tournoi régional</li>
-        </ul>
-      </section>
+        <div class="news-container">
+          <div v-for="article in news" :key="article.title" class="news-article">
+            <h2>{{ article.title }}</h2>
+            <p class="news-meta">
+              Publié le {{ formatDate(article.createdAt) }} par {{ article.author }}
+            </p>
+            <p>{{ article.content }}</p>
+          </div>
+        </div>
+      </div>
 
       <section class="events">
         <h2>Événements à venir</h2>
@@ -56,13 +60,40 @@
 
 <script>
 export default {
-  name: 'HomePage'
+  name: 'HomePage',
+  data() {
+    return {
+      news: [
+        {
+          title: "Titre de l'actualité 1",
+          content: "Contenu de l'actualité 1...",
+          createdAt: "2023-06-01",
+          author: "Auteur 1"
+        },
+        {
+          title: "Titre de l'actualité 2",
+          content: "Contenu de l'actualité 2...",
+          createdAt: "2023-06-10",
+          author: "Auteur 2"
+        }
+      ]
+    };
+  },
+  methods: {
+    formatDate(dateStr) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(dateStr).toLocaleDateString(undefined, options);
+    }
+  }
 }
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 .welcome-message {
-  font-size: 2.5em;
+  font-size: 2.4em;
+  font-weight: bold;
+  font-family:'Poppins',sans-serif;
   text-align: center;
   margin-top: 40px;
   color: #333;
@@ -97,6 +128,27 @@ nav {
 section {
   margin-top: 40px;
 }
+
+.news-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.news-article {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  font-size:12px;
+  background-color: #f9f9f9;
+}
+
+.news-meta {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
 
 h2 {
   color: #555;
