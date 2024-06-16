@@ -3,7 +3,6 @@
 </script>
 <template>
     <div class="h-screen">
-        What's up
         <Navbar/>
         <slot/>
     </div>

@@ -6,19 +6,19 @@
           <!-- <img src="/path-to-logo.png" alt="Logo" class="h-8 w-auto"> -->
         </NuxtLink>
       </div>
-      <div class="hidden md:flex items-center space-x-6">
+      <div class="hidden lg:flex items-center space-x-6">
         <NuxtLink to="/" :class="linkClass">Home</NuxtLink>
         <NuxtLink to="/about" :class="linkClass">About</NuxtLink>
         <NuxtLink to="/services" :class="linkClass">Services</NuxtLink>
         <NuxtLink to="/contact" :class="linkClass">Contact</NuxtLink>
         <NuxtLink to="/get-started" :class="buttonClass">Get Started</NuxtLink>
-        <NuxtLink to="/login" :class="buttonClass">Login</NuxtLink>
-        <NuxtLink to="/register" :class="buttonClass">Register</NuxtLink>
+        <!-- <NuxtLink to="/login" :class="buttonClass">Login</NuxtLink>
+        <NuxtLink to="/register" :class="buttonClass">Register</NuxtLink> -->
         <button @click="toggleDarkMode" class="ml-4 px-4 py-2 rounded focus:outline-none" :class="toggleButtonClass">
           {{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}
         </button>
       </div>
-      <div class="md:hidden flex items-center">
+      <div class="lg:hidden flex items-center">
         <button @click="toggleMenu" :class="isDarkMode ? 'text-white' : 'text-white'" class="focus:outline-none">
           <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
@@ -26,15 +26,15 @@
         </button>
       </div>
     </div>
-    <div v-if="isMenuOpen" class="md:hidden">
+    <div v-if="isMenuOpen" class="lg:hidden">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <NuxtLink to="/" :class="linkClassMobile">Home</NuxtLink>
         <NuxtLink to="/about" :class="linkClassMobile">About</NuxtLink>
         <NuxtLink to="/services" :class="linkClassMobile">Services</NuxtLink>
         <NuxtLink to="/contact" :class="linkClassMobile">Contact</NuxtLink>
         <NuxtLink to="/get-started" :class="buttonClassMobile">Get Started</NuxtLink>
-        <NuxtLink to="/login" :class="buttonClassMobile">Login</NuxtLink>
-        <NuxtLink to="/register" :class="buttonClassMobile">Register</NuxtLink>
+        <!-- <NuxtLink to="/login" :class="buttonClassMobile">Login</NuxtLink>
+        <NuxtLink to="/register" :class="buttonClassMobile">Register</NuxtLink> -->
         <button @click="toggleDarkMode" class="block w-full text-center px-4 py-2 rounded focus:outline-none" :class="toggleButtonClassMobile">
           {{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}
         </button>

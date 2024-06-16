@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/content": "^2.12.1",
     "@prisma/client": "^5.15.0",
     "h3-js": "^4.1.0",
     "nuxt": "^3.12.1",

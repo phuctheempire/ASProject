@@ -4,5 +4,5 @@ console.log(response)
 </script> -->
 
 <template>
-    <div>index page</div>
+    
 </template>
