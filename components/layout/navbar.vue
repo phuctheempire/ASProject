@@ -8,8 +8,8 @@
       </div>
       <div class="hidden lg:flex items-center space-x-6">
         <NuxtLink to="/" :class="linkClass">Home</NuxtLink>
-        <NuxtLink to="/about" :class="linkClass">About</NuxtLink>
-        <NuxtLink to="/services" :class="linkClass">Services</NuxtLink>
+        <NuxtLink to="/sport" :class="linkClass">All sport</NuxtLink>
+        <NuxtLink to="/sport/basket" :class="linkClass">Basket</NuxtLink>
         <NuxtLink to="/contact" :class="linkClass">Contact</NuxtLink>
         <NuxtLink to="/get-started" :class="buttonClass">Get Started</NuxtLink>
         <!-- <NuxtLink to="/login" :class="buttonClass">Login</NuxtLink>
@@ -29,7 +29,7 @@
     <div v-if="isMenuOpen" class="lg:hidden">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <NuxtLink to="/" :class="linkClassMobile">Home</NuxtLink>
-        <NuxtLink to="/about" :class="linkClassMobile">About</NuxtLink>
+        <NuxtLink to="/sport" :class="linkClassMobile">All Sport</NuxtLink>
         <NuxtLink to="/services" :class="linkClassMobile">Services</NuxtLink>
         <NuxtLink to="/contact" :class="linkClassMobile">Contact</NuxtLink>
         <NuxtLink to="/get-started" :class="buttonClassMobile">Get Started</NuxtLink>

@@ -1,3 +1,7 @@
+<script setup lang="ts">
+// import { ContentDoc } from '#build/components';
+</script>
+
 <template>
     <div class="h-screen">
         <Navbar/>
@@ -10,5 +14,6 @@
                 </div>
             </div>
         </div>
+        <div><ContentDoc path="/actualite/actu1"/></div>
     </div>
 </template>
