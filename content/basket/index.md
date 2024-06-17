@@ -13,10 +13,10 @@ image: #image cua avion
     - link:
     - link:
 jours_horaires:
-    - j:
+    - jh:
         jour: 'Mardi' 
         horaires:  '21h00 - 22h00'
-    - j:
+    - jh:
         jour: 'Mercredi' 
         horaires: '20h00 - 22h00'
 lieu: 'Gymnase Jean Moulin, Rue Jean Moulin, 18000 Bourges'

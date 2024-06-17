@@ -13,7 +13,7 @@ image: #image cua avion
     - link:
     - link:
 jours_horaires:
-    - j:
+    - jh:
         jour: 'Jeudi'
         horaires: '18h - 20h'
 lieu: 'Stade des Bigarelles, 22 Avenue des Dumones, 18000 Bourges'

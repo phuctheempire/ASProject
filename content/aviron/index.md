@@ -13,7 +13,7 @@ image: #image cua avion
     - link:
     - link:
 jours_horaires:
-    - j:
+    - jh:
         jour: "Jeudi "
         horaires: "15h00 - 17h00"
 lieu: "Base d'Aviron Alice Milliat, Chemin du Grand Mazières, 18000 Bourges"

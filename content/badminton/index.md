@@ -14,12 +14,12 @@ image: #image cua avion
     - link:
 jours_horaires:
     - jh:
-        jour: "Jeudi"
-        horaires: "15h00 - 17h00"
+        jour: 'Jeudi'
+        horaires: '15h00 - 17h00'
     - jh:
-        jour: "Vendredi"
-        horaires: "15h00 - 17h00"
-lieu: "Gymnase Yves du manoir, 74 Rue de Turly, 18000 Bourges"
+        jour: 'Vendredi'
+        horaires: '15h00 - 17h00'
+lieu: 'Gymnase Yves du manoir, 74 Rue de Turly, 18000 Bourges'
 ---
 
 ## Bienvenue sur la page dédiée au badminton !

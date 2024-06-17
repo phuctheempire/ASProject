@@ -1,0 +1,129 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+
+
+
+
+model Account {
+  id            String    @id @default(cuid()) 
+  user_name     String    @unique
+  password      String
+  sport         SportAccount[]
+}
+
+model User {
+  id            String    @id @default(cuid()) 
+  email         String?   @unique
+  name          String?
+  role          String?
+  sport        SportResponsable[]  
+}
+
+model Sport {
+  id            String    @id @default(cuid()) 
+  name          String?   
+  campus        String?
+  responsables  SportResponsable[]
+  plan_weekly   SportPlan[]    
+  articles      SportArticle[]
+  results       SportResult[]
+  evenement     SportEvenement[]
+  account       SportAccount[]
+
+  @@unique([name,campus])
+}
+
+
+model Plan  {
+  id            String    @id @default(cuid())
+  sport        SportPlan[] 
+  place         String
+  hour_date     DateTime
+
+}
+
+model Article {
+  id            String    @id @default(cuid())
+  sport        SportArticle[]
+  title         String
+  description   String
+}
+
+model Evenement {
+  id            String    @id @default(cuid())
+  name          String    @unique
+  hour_date     DateTime        
+  place         String  
+  sport        SportEvenement[]
+}
+
+model Result {
+  id            String    @id @default(cuid())
+  sports         SportResult[]
+  description   String
+}
+
+model SportAccount {
+  id        String  @id @default(cuid())
+  sportID   String
+  accountID String  @unique
+  sport     Sport   @relation(fields: [sportID], references: [id], onDelete: Cascade)
+  account   Account  @relation(fields: [accountID], references: [id], onDelete: Cascade)
+  @@unique([sportID, accountID])
+}
+
+model SportResponsable {
+  id         String  @id @default(cuid())
+  sportID    String
+  userID     String
+  sport      Sport   @relation(fields: [sportID], references: [id], onDelete: Cascade)
+  user       User    @relation(fields: [userID], references: [id], onDelete: Cascade)
+  @@unique([sportID, userID])
+}
+
+model SportPlan {
+  id         String  @id @default(cuid())
+  sportID    String
+  planID     String
+  sport      Sport   @relation(fields: [sportID], references: [id], onDelete: Cascade)
+  plan       Plan    @relation(fields: [planID], references: [id], onDelete: Cascade)
+  @@unique([planID, sportID])
+}
+
+model SportArticle {
+  id         String  @id @default(cuid())
+  sportID    String
+  articleID  String @unique
+  sport      Sport   @relation(fields: [sportID], references: [id], onDelete: Cascade)
+  article    Article    @relation(fields: [articleID], references: [id], onDelete: Cascade)
+  @@unique([articleID, sportID])
+}
+
+model SportEvenement {
+  id          String     @id @default(cuid())
+  sportID     String
+  evenementID String     @unique
+  sport       Sport      @relation(fields: [sportID], references: [id], onDelete: Cascade)
+  evenement   Evenement  @relation(fields: [evenementID], references: [id], onDelete: Cascade)
+  @@unique([evenementID, sportID])
+}
+
+model SportResult {
+  id        String  @id @default(cuid())
+  sportID   String
+  resultID  String  @unique
+  sport     Sport   @relation(fields: [sportID], references: [id], onDelete: Cascade)
+  result    Result  @relation(fields: [resultID], references: [id], onDelete: Cascade)
+  @@unique([sportID, resultID])
+}
+

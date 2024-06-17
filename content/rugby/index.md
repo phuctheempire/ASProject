@@ -13,7 +13,7 @@ image: #image cua avion
     - link:
     - link:
 jours_horaires:
-    - j:
+    - jh:
         jour: 'Jeudi'
         horaires: '17h - 19h'
 lieu: 'Terrain grillagé Gymnase Yves du manoir, 74 Rue de Turly, 18000 Bourges'

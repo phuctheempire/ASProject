@@ -13,7 +13,7 @@ image: #image cua avion
     - link:
     - link:
 jours_horaires:
-    - j:
+    - jh:
         jour: ' Jeudi' 
         horaires: '15h30 - 17h'
 lieu: " Bourges Tennis Club, 34 Boulevard de l'Industrie, 18000 Bourges"

@@ -1,25 +1,47 @@
 <template>
   <div>
-  <div class="relative">
-    <nuxt-link to="/" class="absolute top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-md shadow-md">
-      Retour à l'accueil
-    </nuxt-link></div>  
-    <p>Bienvenue sur la page dédiée à la natation !</p>
+    <div class="relative">
+      <nuxt-link to="/" class="absolute top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-md shadow-md">
+        Retour à l'accueil
+      </nuxt-link>
+    </div>
+    <div>
+      <h1><ContentRenderer :value="data"></ContentRenderer></h1> 
+      <!-- Bo phan markdown ( Noi dung o duoi --- ) -->
+    </div>
+    
     <div class="info">
       <h2>Informations</h2>
-      <p><strong>Responsable :</strong> Mr Vaukan </p>
+      <div>
+        <strong>Responsables :</strong>
+        <div v-for="(item,index) in data.responsables" :key="index">
+          <strong><h3>{{ item.responsable.name }}</h3></strong>
+          <p>{{ item.responsable.email }}</p>
+          <!-- Cach parcours list -->
+        </div>
+      </div>
       <p><strong>Jours et Horaires :</strong></p>
       <ul>
-        <li>Jeudi : 13h30 - 14h30</li>
+        <li v-for="(item,index) in data.jours_horaires" :key="index">
+          <p>{{ item.jh.jour }}</p>
+          <p>{{ item.jh.horaires }}</p>
+        </li>
       </ul>
     </div>
     <div class="location">
       <h2>Lieu</h2>
-      <p>Centre Nautique Raymond Boisdé, Place Pierre de Coubertin, 18000 Bourges</p>
+      <p> {{data.lieu}}</p>
       <div id="map"></div>
     </div>
   </div>
 </template>
+
+
+<script setup>
+let { data } = await useAsyncData('natation', () => queryContent('/natation').findOne())
+console.log(data)
+console.log('hello')
+</script>
 
 <script>
 import L from 'leaflet'
