@@ -20,7 +20,8 @@
           <li><nuxt-link to="/volley">Volley</nuxt-link></li>
           <li><nuxt-link to="/aviron">Aviron</nuxt-link></li>
           <li><nuxt-link to="/running">Running</nuxt-link></li>
-          <li><nuxt-link to="/responsables">Responsables</nuxt-link></li>
+          <li><nuxt-link to="/responsablesbourges">Responsables Bourges</nuxt-link></li>
+          <li><nuxt-link to="/responsablesblois">Responsables Blois</nuxt-link></li>  
         </ul>
       </nav>
 
