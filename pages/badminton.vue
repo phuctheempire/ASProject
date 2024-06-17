@@ -6,12 +6,12 @@
       </nuxt-link>
     </div>  
     
+    <p>Bienvenue sur la page dédiée au badminton !</p>
+
     <!-- Section pour Bourges -->
     <div>
-      <h1>Page de Badminton - Bourges</h1>
-      <p>Bienvenue sur la page dédiée au badminton à Bourges !</p>
+      <h1>Badminton - Bourges</h1>
       <div class="info">
-        <h2>Informations</h2>
         <p><strong>Responsables :</strong> Manon et Romane</p>
         <p><strong>Jours et Horaires :</strong></p>
         <ul>
@@ -27,10 +27,8 @@
     
     <!-- Section pour Blois -->
     <div>
-      <h1>Page de Badminton - Blois</h1>
-      <p>Bienvenue sur la page dédiée au badminton à Blois !</p>
+      <h1>Badminton - Blois</h1>
       <div class="info">
-        <h2>Informations</h2>
         <p><strong>Responsable :</strong> Fanny</p>
         <p><strong>Jours et Horaires :</strong></p>
         <ul>
@@ -100,13 +98,18 @@ h1, h2 {
   color: #333;
 }
 
-p, ul {
-  font-size: 1.1em;
+h1 {
+  font-size : 1.3em;
+}
+
+p {
+  font-size: 1.5em;
 }
 
 ul {
   list-style-type: disc;
   margin-left: 20px;
+  font-size: 1.1em;
 }
 
 nav {
