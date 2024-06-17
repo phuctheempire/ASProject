@@ -1,15 +1,16 @@
 <template>
   <div>
     <div class="relative">
-      <nuxt-link to="/" class="absolute top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-md shadow-md">
+      <nuxt-link to="/" class="absolute top-4 right-4 bg-purple-500 text-white px-4 py-2 rounded-md shadow-md">
         Retour à l'accueil
       </nuxt-link>
     </div>  
     
+    <h3>Bienvenue sur la page dédiée au Badminton !</h3>
+
     <!-- Section pour Bourges -->
     <div>
-      <h1>Page de Badminton - Bourges</h1>
-      <p>Bienvenue sur la page dédiée au badminton à Bourges !</p>
+      <h1>Badminton - Bourges</h1>
       <div class="info">
         <p><strong>Responsables :</strong> Manon et Romane</p>
         <p><strong>Jours et Horaires :</strong></p>
@@ -18,18 +19,15 @@
         </ul>
       </div>
       <div class="location">
-        <h2>Lieu</h2>
-        <p>Gymnase Yves du manoir, 74 Rue de Turly, 18000 Bourges</p>
+        <p><strong>Lieu :</strong> Gymnase Yves du manoir, 74 Rue de Turly, 18000 Bourges</p>
         <div id="map-bourges"></div>
       </div>
     </div>
     
     <!-- Section pour Blois -->
     <div>
-      <h1>Page de Badminton - Blois</h1>
-      <p>Bienvenue sur la page dédiée au badminton à Blois !</p>
+      <h1>Badminton - Blois</h1>
       <div class="info">
-        <h2>Informations</h2>
         <p><strong>Responsable :</strong> Fanny</p>
         <p><strong>Jours et Horaires :</strong></p>
         <ul>
@@ -37,8 +35,7 @@
         </ul>
       </div>
       <div class="location">
-        <h2>Lieu</h2>
-        <p>Gymnase Pierre de Coubertin, Rue des Quatre Vents, 41000 Blois</p>
+        <p><strong>Lieu :</strong> Gymnase Pierre de Coubertin, Rue des Quatre Vents, 41000 Blois </p>
         <div id="map-blois"></div>
       </div>
     </div>
@@ -90,26 +87,44 @@ export default {
 #map-bourges, #map-blois {
   height: 200px;
   width: 50%;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
 }
 
-h1, h2 {
-  color: #333;
+h1 {
+  color: #555;
+  font-size: 2em;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 15px;
+  font-family:'Poppins',sans-serif;
 }
 
-p, ul {
-  font-size: 1.1em;
+p {
+  font-size: 1.5em;
 }
+li {
+  font-size: 1.3em;
+}
+
 
 ul {
   list-style-type: disc;
   margin-left: 20px;
+  font-size: 1.1em;
 }
 
 nav {
   text-align: center;
   margin-top: 30px;
+}
+
+h3 {
+  font-size: 2.4em;
+  font-weight: bold;
+  font-family:'Poppins',sans-serif;
+  text-align: center;
+  margin-top: 10px;
+  color: #333;
 }
 </style>

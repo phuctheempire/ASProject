@@ -1,12 +1,11 @@
 <template>
   <div>
   <div class="relative">
-    <nuxt-link to="/" class="absolute top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-md shadow-md">
+    <nuxt-link to="/" class="absolute top-4 right-4 bg-purple-500 text-white px-4 py-2 rounded-md shadow-md">
       Retour à l'accueil
     </nuxt-link></div>  
-    <p>Bienvenue sur la page dédiée à l'aviron !</p>
+    <p>Bienvenue sur la page dédiée à l'Aviron !</p>
     <div class="info">
-      <h2>Informations</h2>
       <p><strong>Responsables :</strong> Brice et Paul </p>
       <p><strong>Jours et Horaires :</strong></p>
       <ul>
@@ -14,7 +13,7 @@
       </ul>
     </div>
     <div class="location">
-      <h2>Lieu</h2>
+      <h2><strong>Lieu</strong></h2>
       <p>Base d'Aviron Alice Milliat, Chemin du Grand Mazières, 18000 Bourges</p>
       <div id="map"></div>
     </div>
@@ -63,13 +62,18 @@ h1, h2 {
   color: #333;
 }
 
-p, ul {
-  font-size: 1.1em;
+h1, h2 {
+  font-size : 1.3em;
+}
+
+p {
+  font-size: 1.5em;
 }
 
 ul {
   list-style-type: disc;
   margin-left: 20px;
+  font-size: 1.1em;
 }
 
 nav {
