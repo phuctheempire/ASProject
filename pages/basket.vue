@@ -11,7 +11,7 @@
     <div>
       <h1>Basket - Bourges</h1>
       <div class="info">
-        <p><strong>Responsable :</strong>  Hugo </p>
+        <p><strong>Responsable :</strong> Hugo </p>
         <p><strong>Jours et Horaires :</strong></p>
         <ul>
           <li>Mardi : 21h00 - 22h00</li>
@@ -20,7 +20,7 @@
       </div>
       <div class="location">
         <h2>Lieu</h2>
-        <p> Gymnase Jean Moulin, Rue Jean Moulin, 18000 Bourges</p>
+        <p>Gymnase Jean Moulin, Rue Jean Moulin, 18000 Bourges</p>
         <div id="map-bourges"></div>
       </div>
     </div>
@@ -29,7 +29,7 @@
     <div>
       <h1>Basket - Blois</h1>
       <div class="info">
-        <p><strong>Responsable :</strong> machin</p>
+        <p><strong>Responsable :</strong> Machin</p>
         <p><strong>Jours et Horaires :</strong></p>
         <ul>
           <li>Mardi : 17h00 - 18h30</li>
@@ -62,9 +62,9 @@ export default {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(mapBourges);
 
-      L.marker([47.1039626, 2.4049524]).addTo(map) 
+      L.marker([47.1039626, 2.4049524]).addTo(mapBourges) 
         .bindPopup("Gymnase Jean Moulin<br>Rue Jean Moulin, 18000 Bourges")
-        .openPopup()
+        .openPopup();
     },
     initMapBlois() {
       const mapBlois = L.map('map-blois').setView([47.5860922, 1.335947], 13);
@@ -81,20 +81,17 @@ export default {
 }
 </script>
 
-
-
-
 <style scoped>
 .info, .location {
   margin-bottom: 20px;
 }
 
-#map {
+#map-bourges, #map-blois {
   height: 200px;  
   width: 50%;    
   margin-top: 20px;
   margin-left: auto;  
-  margin-right: auto
+  margin-right: auto;
 }
 
 h1, h2 {
@@ -102,7 +99,7 @@ h1, h2 {
 }
 
 h1 {
-  font-size : 1.3em;
+  font-size: 1.3em;
 }
 
 p {
