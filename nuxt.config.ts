@@ -12,5 +12,20 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@nuxt/content"]
+  modules: ["@nuxt/content",
+    // '@nuxtjs/axios',
+    // '@nuxtjs/auth-next',
+    '@sidebase/nuxt-auth',  
+  ], 
+  // auth: {
+  //   globalAppMiddleware: true,
+  // },
+  runtimeConfig: {
+    GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
+    public: {
+      GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
+    },
+  }
+  // modules: ['@sidebase/nuxt-auth']
 })
+

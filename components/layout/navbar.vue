@@ -11,7 +11,7 @@
         <NuxtLink to="/about" :class="linkClass">About</NuxtLink>
         <NuxtLink to="/services" :class="linkClass">Services</NuxtLink>
         <NuxtLink to="/contact" :class="linkClass">Contact</NuxtLink>
-        <NuxtLink to="/get-started" :class="buttonClass">Get Started</NuxtLink>
+        <NuxtLink to="/login" :class="buttonClass">Log In</NuxtLink>
         <!-- <NuxtLink to="/login" :class="buttonClass">Login</NuxtLink>
         <NuxtLink to="/register" :class="buttonClass">Register</NuxtLink> -->
         <button @click="toggleDarkMode" class="ml-4 px-4 py-2 rounded focus:outline-none" :class="toggleButtonClass">
@@ -32,7 +32,7 @@
         <NuxtLink to="/about" :class="linkClassMobile">About</NuxtLink>
         <NuxtLink to="/services" :class="linkClassMobile">Services</NuxtLink>
         <NuxtLink to="/contact" :class="linkClassMobile">Contact</NuxtLink>
-        <NuxtLink to="/get-started" :class="buttonClassMobile">Get Started</NuxtLink>
+        <NuxtLink to="/login" :class="buttonClassMobile">Log In</NuxtLink>
         <!-- <NuxtLink to="/login" :class="buttonClassMobile">Login</NuxtLink>
         <NuxtLink to="/register" :class="buttonClassMobile">Register</NuxtLink> -->
         <button @click="toggleDarkMode" class="block w-full text-center px-4 py-2 rounded focus:outline-none" :class="toggleButtonClassMobile">
