@@ -32,12 +32,39 @@ model Sport {
   id            String    @id @default(cuid()) 
   name          String?   @unique
   responsable   User[]
-  actualites     Actualite[]
+  plan_weekly   Plan[]    
+  actualites    Actualite[]
+  resultats     Resultat[]
+  evenement     Evenement[]
+
+}
+
+model Plan  {
+  id            String    @id @default(cuid())
+  sportID       String    
+  sport         Sport     @relation(fields: [sportID], references: [id], onDelete: Cascade)
+  place         String
+  hour_date     DateTime
 
 }
 
 model Actualite {
   id            String    @id @default(cuid())
-  domainID      String    @unique
-  domain        Sport     @relation(fields: [domainID], references: [id], onDelete: Cascade)
+  sportID       String    @unique
+  sport         Sport     @relation(fields: [sportID], references: [id], onDelete: Cascade)
+}
+
+model Evenement {
+  id            String    @id @default(cuid())
+  name          String    @unique
+  hour_date     DateTime        
+  place         String  
+  sportID       String    @unique
+  sport         Sport     @relation(fields: [sportID], references: [id], onDelete: Cascade)
+}
+
+model Resultat {
+  id            String    @id @default(cuid())
+  sportID       String    @unique
+  sport         Sport     @relation(fields: [sportID], references: [id], onDelete: Cascade)
 }
