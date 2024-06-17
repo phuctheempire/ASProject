@@ -1,23 +1,45 @@
 <template>
   <div>
-  <div class="relative">
-    <nuxt-link to="/" class="absolute top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-md shadow-md">
-      Retour à l'accueil
-    </nuxt-link></div>  
+    <div class="relative">
+      <nuxt-link to="/" class="absolute top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-md shadow-md">
+        Retour à l'accueil
+      </nuxt-link>
+    </div>  
+
     <p>Bienvenue sur la page dédiée au basket !</p>
-    <div class="info">
-      <h2>Informations</h2>
-      <p><strong>Responsable :</strong>  Hugo </p>
-      <p><strong>Jours et Horaires :</strong></p>
-      <ul>
-        <li>Mardi : 21h00 - 22h00</li>
-        <li>Mercredi : 20h00 - 22h00</li>
-      </ul>
+
+    <div>
+      <h1>Basket - Bourges</h1>
+      <div class="info">
+        <p><strong>Responsable :</strong>  Hugo </p>
+        <p><strong>Jours et Horaires :</strong></p>
+        <ul>
+          <li>Mardi : 21h00 - 22h00</li>
+          <li>Mercredi : 20h00 - 22h00</li>
+        </ul>
+      </div>
+      <div class="location">
+        <h2>Lieu</h2>
+        <p> Gymnase Jean Moulin, Rue Jean Moulin, 18000 Bourges</p>
+        <div id="map-bourges"></div>
+      </div>
     </div>
-    <div class="location">
-      <h2>Lieu</h2>
-      <p> Gymnase Jean Moulin, Rue Jean Moulin, 18000 Bourges</p>
-      <div id="map"></div>
+    
+    <!-- Section pour Blois -->
+    <div>
+      <h1>Basket - Blois</h1>
+      <div class="info">
+        <p><strong>Responsable :</strong> machin</p>
+        <p><strong>Jours et Horaires :</strong></p>
+        <ul>
+          <li>Mardi : 17h00 - 18h30</li>
+        </ul>
+      </div>
+      <div class="location">
+        <h2>Lieu</h2>
+        <p>Gymnase Pierre de Coubertin, Rue des Quatre Vents, 41000 Blois</p>
+        <div id="map-blois"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -29,23 +51,38 @@ import 'leaflet/dist/leaflet.css'
 export default {
   name: 'BasketPage',
   mounted() {
-    this.initMap()
+    this.initMapBourges();
+    this.initMapBlois();
   },
   methods: {
-    initMap() {
-      const map = L.map('map').setView([47.1039626, 2.4049524], 13)
+    initMapBourges() {
+      const mapBourges = L.map('map-bourges').setView([47.1039626, 2.4049524], 13);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map)
+      }).addTo(mapBourges);
 
       L.marker([47.1039626, 2.4049524]).addTo(map) 
         .bindPopup("Gymnase Jean Moulin<br>Rue Jean Moulin, 18000 Bourges")
         .openPopup()
+    },
+    initMapBlois() {
+      const mapBlois = L.map('map-blois').setView([47.5860922, 1.335947], 13);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(mapBlois);
+
+      L.marker([47.5860922, 1.335947]).addTo(mapBlois)
+        .bindPopup("Gymnase Pierre de Coubertin<br>Rue des Quatre Vents, 41000 Blois")
+        .openPopup();
     }
   }
 }
 </script>
+
+
+
 
 <style scoped>
 .info, .location {
@@ -64,13 +101,18 @@ h1, h2 {
   color: #333;
 }
 
-p, ul {
-  font-size: 1.1em;
+h1 {
+  font-size : 1.3em;
+}
+
+p {
+  font-size: 1.5em;
 }
 
 ul {
   list-style-type: disc;
   margin-left: 20px;
+  font-size: 1.1em;
 }
 
 nav {
