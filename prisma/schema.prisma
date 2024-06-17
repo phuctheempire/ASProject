@@ -10,6 +10,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
+
+
+
 model Account {
   id            String    @id @default(cuid()) 
   user_name     String    @unique
@@ -24,34 +28,33 @@ model User {
   name          String?
   role          String?
   account       Account?
-  take_respID   String    
-  take_resp     Sport     @relation(fields: [take_respID], references: [id], onDelete: Cascade) 
+  sports        SportResponsable[]  
 }
 
 model Sport {
   id            String    @id @default(cuid()) 
   name          String?   @unique
-  responsable   User[]
-  plan_weekly   Plan[]    
-  actualites    Actualite[]
-  resultats     Resultat[]
-  evenement     Evenement[]
-
+  responsables  SportResponsable[]
+  plan_weekly   SportPlan[]    
+  articles      SportArticle[]
+  results       SportResult[]
+  evenement     SportEvenement[]
 }
+
 
 model Plan  {
   id            String    @id @default(cuid())
-  sportID       String    
-  sport         Sport     @relation(fields: [sportID], references: [id], onDelete: Cascade)
+  sports        SportPlan[] 
   place         String
   hour_date     DateTime
 
 }
 
-model Actualite {
+model Article {
   id            String    @id @default(cuid())
-  sportID       String    @unique
-  sport         Sport     @relation(fields: [sportID], references: [id], onDelete: Cascade)
+  sports        SportArticle[]
+  title         String
+  description   String
 }
 
 model Evenement {
@@ -59,12 +62,56 @@ model Evenement {
   name          String    @unique
   hour_date     DateTime        
   place         String  
-  sportID       String    @unique
-  sport         Sport     @relation(fields: [sportID], references: [id], onDelete: Cascade)
+  sports         SportEvenement[]
 }
 
-model Resultat {
+model Result {
   id            String    @id @default(cuid())
-  sportID       String    @unique
-  sport         Sport     @relation(fields: [sportID], references: [id], onDelete: Cascade)
+  sports         SportResult[]
+  description   String
+}
+
+model SportResponsable {
+  id         String  @id @default(cuid())
+  sportID    String
+  userID     String
+  sport      Sport   @relation(fields: [sportID], references: [id], onDelete: Cascade)
+  user       User    @relation(fields: [userID], references: [id], onDelete: Cascade)
+  @@unique([sportID, userID])
+}
+
+model SportPlan {
+  id         String  @id @default(cuid())
+  sportID    String
+  planID     String
+  sport      Sport   @relation(fields: [sportID], references: [id], onDelete: Cascade)
+  plan       Plan    @relation(fields: [planID], references: [id], onDelete: Cascade)
+  @@unique([planID, sportID])
+}
+
+model SportArticle {
+  id         String  @id @default(cuid())
+  sportID    String
+  articleID  String @unique
+  sport      Sport   @relation(fields: [sportID], references: [id], onDelete: Cascade)
+  article    Article    @relation(fields: [articleID], references: [id], onDelete: Cascade)
+  @@unique([articleID, sportID])
+}
+
+model SportEvenement {
+  id          String     @id @default(cuid())
+  sportID     String
+  evenementID String     @unique
+  sport       Sport      @relation(fields: [sportID], references: [id], onDelete: Cascade)
+  evenement   Evenement  @relation(fields: [evenementID], references: [id], onDelete: Cascade)
+  @@unique([evenementID, sportID])
+}
+
+model SportResult {
+  id        String  @id @default(cuid())
+  sportID   String
+  resultID  String  @unique
+  sport     Sport   @relation(fields: [sportID], references: [id], onDelete: Cascade)
+  result    Result  @relation(fields: [resultID], references: [id], onDelete: Cascade)
+  @@unique([sportID, resultID])
 }
