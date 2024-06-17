@@ -1,27 +1,48 @@
 <template>
   <div>
-  <div class="relative">
-    <nuxt-link to="/" class="absolute top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-md shadow-md">
-      Retour à l'accueil
-    </nuxt-link></div>  
-    <p>Bienvenue sur la page dédiée au cheer !</p>
-    <div class="info">
-      <h2>Informations</h2>
-      <p><strong>Responsables :</strong> Capucine et Inès</p>
-      <p><strong>Jours et Horaires :</strong></p>
-      <ul>
-        <li>Jeudi : 16h00 - 18h00 (stunt)</li>
+    <div class="relative">
+      <nuxt-link to="/" class="absolute top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-md shadow-md">
+        Retour à l'accueil
+      </nuxt-link>
+    </div>  
 
-        <li>Jeudi : 16h00 - 18h00 (stunt)</li>
-      </ul>
+    <p>Bienvenue sur la page dédiée au cheer !</p>
+
+    <div>
+      <h1>Cheer - Bourges</h1>
+      <div class="info">
+        <p><strong>Responsables :</strong>  Capucine et Ines </p>
+        <p><strong>Jours et Horaires :</strong></p>
+        <ul>
+          <li>Mardi : 20h30 - 22h00 (choregraphie)</li>
+          <li>Jeudi : 16h00 - 18h00 (stunt)</li>
+        </ul>
+      </div>
+      <div class="location">
+        <h2>Lieu</h2>
+        <p> Gymnase Jean Brivot, Avenue Roland Garros, 18000 Bourges</p>
+        <div id="map-bourges"></div>
+      </div>
     </div>
-    <div class="location">
-      <h2>Lieu</h2>
-      <p> Gymnase Jean Brivot, Avenue Roland Garros, 18000 Bourges</p>
-      <div id="map"></div>
+
+    <div>
+      <h1>Cheer - Blois</h1>
+      <div class="info">
+        <p><strong>Responsable :</strong> Lola</p>
+        <p><strong>Jours et Horaires :</strong></p>
+        <ul>
+          <li>Mardi : 17h00 - 18h30</li>
+        </ul>
+      </div>
+      <div class="location">
+        <h2>Lieu</h2>
+        <p>Gymnase Pierre de Coubertin, Rue des Quatre Vents, 41000 Blois</p>
+        <div id="map-blois"></div>
+      </div>
     </div>
   </div>
 </template>
+
 
 <script>
 import L from 'leaflet'
@@ -30,23 +51,36 @@ import 'leaflet/dist/leaflet.css'
 export default {
   name: 'CheerPage',
   mounted() {
-    this.initMap()
+    this.initMapBourges();
+    this.initMapBlois();
   },
   methods: {
-    initMap() {
-      const map = L.map('map').setView([47.0654266, 2.3808466], 13)
+    initMapBourges() {
+      const mapBourges = L.map('map-bourges').setView([47.0654266, 2.3808466], 13);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map)
+      }).addTo(mapBourges);
 
-      L.marker([47.0654266, 2.3808466]).addTo(map) 
+      L.marker([47.0654266, 2.3808466]).addTo(mapBourges)
         .bindPopup("Gymnase Jean Brivot<br>Avenue Roland Garros, 18000 Bourges")
-        .openPopup()
+        .openPopup();
+    },
+    initMapBlois() {
+      const mapBlois = L.map('map-blois').setView([47.5860922, 1.335947], 13);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(mapBlois);
+
+      L.marker([47.5860922, 1.335947]).addTo(mapBlois)
+        .bindPopup("Gymnase Pierre de Coubertin<br>Rue des Quatre Vents, 41000 Blois")
+        .openPopup();
     }
   }
 }
 </script>
+
 
 <style scoped>
 .info, .location {
@@ -65,13 +99,18 @@ h1, h2 {
   color: #333;
 }
 
-p, ul {
-  font-size: 1.1em;
+h1 {
+  font-size : 1.3em;
+}
+
+p {
+  font-size: 1.5em;
 }
 
 ul {
   list-style-type: disc;
   margin-left: 20px;
+  font-size: 1.1em;
 }
 
 nav {
