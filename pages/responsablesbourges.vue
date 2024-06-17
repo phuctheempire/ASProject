@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto p-4">
-    <h1 class="text-3xl font-bold mb-4">Responsables par sport</h1>
+    <h1 class="text-3xl font-bold mb-4">Responsables par sport à Bourges</h1>
 
     <!-- Liste des sports avec leurs responsables -->
     <div v-for="sport in sports" :key="sport.id" class="mb-8">
