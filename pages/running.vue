@@ -6,7 +6,6 @@
     </nuxt-link></div>  
     <p>Bienvenue sur la page dédiée au running !</p>
     <div class="info">
-      <h2>Informations</h2>
       <p><strong>Responsables :</strong> Juliette et Emile </p>
       <p><strong>Jours et Horaires :</strong></p>
       <ul>
@@ -63,13 +62,18 @@ h1, h2 {
   color: #333;
 }
 
-p, ul {
-  font-size: 1.1em;
+h1 {
+  font-size : 1.3em;
+}
+
+p {
+  font-size: 1.5em;
 }
 
 ul {
   list-style-type: disc;
   margin-left: 20px;
+  font-size: 1.1em;
 }
 
 nav {
