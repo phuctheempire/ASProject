@@ -18,6 +18,7 @@ model Account {
   id            String    @id @default(cuid()) 
   user_name     String    @unique
   password      String
+  sport         SportAccount[]
 }
 
 model User {
@@ -25,23 +26,27 @@ model User {
   email         String?   @unique
   name          String?
   role          String?
-  sports        SportResponsable[]  
+  sport        SportResponsable[]  
 }
 
 model Sport {
   id            String    @id @default(cuid()) 
-  name          String?   @unique
+  name          String?   
+  campus        String?
   responsables  SportResponsable[]
   plan_weekly   SportPlan[]    
   articles      SportArticle[]
   results       SportResult[]
   evenement     SportEvenement[]
+  account       SportAccount[]
+
+  @@unique([name,campus])
 }
 
 
 model Plan  {
   id            String    @id @default(cuid())
-  sports        SportPlan[] 
+  sport        SportPlan[] 
   place         String
   hour_date     DateTime
 
@@ -49,7 +54,7 @@ model Plan  {
 
 model Article {
   id            String    @id @default(cuid())
-  sports        SportArticle[]
+  sport        SportArticle[]
   title         String
   description   String
 }
@@ -59,13 +64,22 @@ model Evenement {
   name          String    @unique
   hour_date     DateTime        
   place         String  
-  sports         SportEvenement[]
+  sport        SportEvenement[]
 }
 
 model Result {
   id            String    @id @default(cuid())
   sports         SportResult[]
   description   String
+}
+
+model SportAccount {
+  id        String  @id @default(cuid())
+  sportID   String
+  accountID String  @unique
+  sport     Sport   @relation(fields: [sportID], references: [id], onDelete: Cascade)
+  account   Account  @relation(fields: [accountID], references: [id], onDelete: Cascade)
+  @@unique([sportID, accountID])
 }
 
 model SportResponsable {
@@ -112,3 +126,4 @@ model SportResult {
   result    Result  @relation(fields: [resultID], references: [id], onDelete: Cascade)
   @@unique([sportID, resultID])
 }
+
