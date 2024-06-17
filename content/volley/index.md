@@ -13,10 +13,10 @@ image: #image cua avion
     - link:
     - link:
 jours_horaires:
-    - j:
+    - jh:
         jour: 'Lundi' 
         horaires: '18h30 - 20h15'
-    - j:
+    - jh:
         jour: 'Jeudi'
         horaires: '15h30 - 17h30'
 lieu: 'Gymnase Yves du manoir, 74 Rue de Turly, 18000 Bourges'

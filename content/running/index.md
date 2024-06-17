@@ -13,7 +13,7 @@ image: #image cua avion
     - link:
     - link:
 jours_horaires:
-    - j:
+    - jh:
         jour: 'Dimanche' 
         horaires: '10h'
 lieu: 'INSA CVL'

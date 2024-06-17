@@ -13,7 +13,7 @@ image: #image cua avion
     - link:
     - link:
 jours_horaires:
-    - j:
+    - jh:
         jour: 'Jeudi' 
         horaires: '13h30 - 14h30'
 lieu: 'Centre Nautique Raymond Boisdé, Place Pierre de Coubertin, 18000 Bourges'
