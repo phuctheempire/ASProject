@@ -23,7 +23,7 @@ export default {
       // Logique de connexion ici
       alert(`Connexion avec ${this.username}`);
       // Redirect after login
-      this.$router.push('/');
+      this.$router.push('/admin');
     }
   }
 }
