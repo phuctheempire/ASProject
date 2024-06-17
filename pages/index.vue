@@ -1,30 +1,20 @@
 <template>
   <div class="relative">
-    <nuxt-link to="/login" class="absolute top-4 right-4 bg-purple-500 text-white px-4 py-2 rounded-md shadow-md">
-      Se connecter
-    </nuxt-link>
+      <nuxt-link to="/login" class="absolute top-4 right-4 bg-purple-500 text-white px-4 py-2 rounded-md shadow-md">
+    Se connecter
+  </nuxt-link>
     <div class="container mx-auto p-4">
       <img src="/img/logoAS.png" alt="Logo de l'association" class="absolute top-0 left-0 h-16 w-auto z-10 mt-4 ml-4">
       <h1 class="welcome-message">Bienvenue sur le site de l'Association Sportive !</h1>
       <nav>
-        <ul class="sport-list">
-          <li><nuxt-link to="/badminton">Badminton</nuxt-link></li>
-          <li><nuxt-link to="/basket">Basket</nuxt-link></li>
-          <li><nuxt-link to="/cheer">Cheerleading</nuxt-link></li>
-          <li><nuxt-link to="/foot">Football</nuxt-link></li>
-          <li><nuxt-link to="/handball">Handball</nuxt-link></li>
-          <li><nuxt-link to="/natation">Natation</nuxt-link></li>
-          <li><nuxt-link to="/rugby">Rugby</nuxt-link></li>
-          <li><nuxt-link to="/tennis">Tennis</nuxt-link></li>
-          <li><nuxt-link to="/ultimate">Ultimate</nuxt-link></li>
-          <li><nuxt-link to="/volley">Volley</nuxt-link></li>
-          <li><nuxt-link to="/aviron">Aviron</nuxt-link></li>
-          <li><nuxt-link to="/running">Running</nuxt-link></li>
-          <li><nuxt-link to="/responsablesbourges">Responsables Bourges</nuxt-link></li>
-          <li><nuxt-link to="/responsablesblois">Responsables Blois</nuxt-link></li>
-        </ul>
+        <select v-model="selectedSport" @change="navigateToSport(selectedSport)" class="sport-select">
+          <option disabled value="">Sélectionnez un sport</option>
+          <option v-for="sport in sports" :key="sport.id" :value="sport.link">
+            {{ sport.name }}
+          </option>
+        </select>
       </nav>
-
+    
       <div>
         <h2>Actualités</h2>
         <div class="news-container">
@@ -64,23 +54,29 @@ export default {
   name: 'HomePage',
   data() {
     return {
+      sports: [], // Les sports récupérés de la base de données
+      selectedSport: '', // Sport sélectionné dans le menu déroulant
       news: [
-        {
-          title: "Titre de l'actualité 1",
-          content: "Contenu de l'actualité 1...",
-          createdAt: "2023-06-01",
-          author: "Auteur 1"
-        },
-        {
-          title: "Titre de l'actualité 2",
-          content: "Contenu de l'actualité 2...",
-          createdAt: "2023-06-10",
-          author: "Auteur 2"
-        }
+        { title: "Titre de l'actualité 1", content: "Contenu de l'actualité 1...", createdAt: "2023-06-01", author: "Auteur 1" },
+        { title: "Titre de l'actualité 2", content: "Contenu de l'actualité 2...", createdAt: "2023-06-10", author: "Auteur 2" }
       ]
     };
   },
+  mounted() {
+    this.fetchSports();
+  },
   methods: {
+    fetchSports() {
+      // On doit utiliser ici soit axios soit fetch pour récupérer les données de l'API que Phuc est entrain de faire
+      this.sports = [
+        { id: 1, name: "Football", link: "/foot" },
+        { id: 2, name: "Basket", link: "/basket" },
+        // J'ai mis ça juste pour tester, normalement on doit faire ça dynamiquement en liaison avec la Bdd
+      ];
+    },
+    navigateToSport(link) {
+      this.$router.push(link);
+    },
     formatDate(dateStr) {
       const options = { year: 'numeric', month: 'long', day: 'numeric' };
       return new Date(dateStr).toLocaleDateString(undefined, options);
@@ -88,6 +84,7 @@ export default {
   }
 }
 </script>
+
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
@@ -105,25 +102,12 @@ nav {
   margin-top: 30px;
 }
 
-.sport-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.sport-list li {
-  display: inline-block;
-  margin: 10px 15px;
-}
-
-.sport-list li a {
-  text-decoration: none;
-  color: #4B0082;
-  font-size: 1.5em;
-  transition: color 0.3s;
-}
-
-.sport-list li a:hover {
-  color: #0056b3;
+.sport-select {
+  font-size: 1.1em;
+  padding: 10px;
+  margin: 20px auto;
+  display: block;
+  width: 200px; 
 }
 
 section {
