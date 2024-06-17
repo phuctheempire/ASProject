@@ -1,6 +1,6 @@
 <template>
   <div class="relative">
-    <nuxt-link to="/" class="absolute top-4 right-4 bg-purple-500 text-white px-4 py-2 rounded-md shadow-md">
+    <nuxt-link to="/login" class="absolute top-4 right-4 bg-purple-500 text-white px-4 py-2 rounded-md shadow-md">
       Se connecter
     </nuxt-link>
     <div class="container mx-auto p-4">
@@ -21,7 +21,7 @@
           <li><nuxt-link to="/aviron">Aviron</nuxt-link></li>
           <li><nuxt-link to="/running">Running</nuxt-link></li>
           <li><nuxt-link to="/responsablesbourges">Responsables Bourges</nuxt-link></li>
-          <li><nuxt-link to="/responsablesblois">Responsables Blois</nuxt-link></li>  
+          <li><nuxt-link to="/responsablesblois">Responsables Blois</nuxt-link></li>
         </ul>
       </nav>
 
