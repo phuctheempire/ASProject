@@ -13,10 +13,13 @@
 
 <script setup lang="ts">
 // const {status, data} = useAuth()
-definePageMeta({ middleware: 'verify' })
-
 const {data} = await useFetch('/api/a')
-const sport = await useFetch('/api/content/sport')
+definePageMeta({ middleware: 'verify' })
+// ----------------------------------
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+const sport = await prisma.sport.findMany()
+// ----------------------------------
 </script>
 <!-- <script setup lang="ts">
     

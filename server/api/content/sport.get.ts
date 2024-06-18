@@ -9,11 +9,4 @@ export default eventHandler( async event => {
     const sport = await prisma.sport.findMany()
     return sport
 
-
-    // const account = await event.context.prisma.users.findFirst({
-    //     where:{
-    //         username: body.username
-    //     }
-    // })
-
 })
