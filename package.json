@@ -19,6 +19,7 @@
     "@nuxtjs/axios": "^5.13.6",
     "@prisma/client": "^5.15.0",
     "@sidebase/nuxt-auth": "^0.7.2",
+    "bcrypt": "^5.1.1",
     "h3-js": "^4.1.0",
     "leaflet": "^1.9.4",
     "nuxt": "^3.12.2",
