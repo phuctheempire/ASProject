@@ -12,13 +12,17 @@
 </template>
 
 <script setup lang="ts">
+
+// import { PrismaClient } from '@prisma/client'
+// const prisma = new PrismaClient()
+// const sport = await prisma.sport.findMany()
+
 // const {status, data} = useAuth()
-const {data} = await useFetch('/api/a')
+const data = await useFetch('/api/a')
 definePageMeta({ middleware: 'verify' })
 // ----------------------------------
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
-const sport = await prisma.sport.findMany()
+const sport = await useFetch('/api/content/sport')
+
 // ----------------------------------
 </script>
 <!-- <script setup lang="ts">
