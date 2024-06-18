@@ -60,6 +60,12 @@
         <button @click="toggleDarkMode" class="block w-full text-center px-4 py-2 rounded focus:outline-none" :class="toggleButtonClassMobile">
           {{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}
         </button>
+        <button @click="toggleSidebar" class="focus:outline-none button-shift-left">
+          <svg class="h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M0 3h20v2H0V3zm0 5h20v2H0V8zm0 5h20v2H0v-2z"/>
+          </svg>
+        </button>
+        
       </div>
     </div>
   </nav>
@@ -143,8 +149,14 @@ export default {
 }
 
 .button-shift-left {
-  transform: translateX(-700px); /* Déplacez le bouton de 10px vers la gauche */
+  position: fixed; /* Fixez le bouton en haut à gauche */
+  left: 10px; /* Décalez de 10px du bord gauche */
+  top: 10px; /* Ajustez en haut */
+  transform: none; /* Supprimez tout déplacement */
+  transition: transform 0.3s ease; /* Gardez une transition douce si vous souhaitez ajouter un effet */
+ 
 }
+
 
 .sidebar-link {
   display: block;
