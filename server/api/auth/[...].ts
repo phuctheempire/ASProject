@@ -12,11 +12,11 @@ const runtimeConfig = useRuntimeConfig()
 const prisma = new PrismaClient()
 
 // async function getMe(session: any){
-//   return await $fetch('/api/me',{
+//   return await $fetch('/a/me',{
 //     method: 'POST',
-//     query: {
-//       API_ROUTE_SECRET: runtimeConfig.API_ROUTE_SECRET,
-//     },
+//     // query: {
+//     //   API_ROUTE_SECRET: runtimeConfig.API_ROUTE_SECRET,
+//     // },
 //     body: {
 //       email: session?.user?.email,
 //     },
@@ -30,14 +30,16 @@ export default NuxtAuthHandler({
   },
 
   // adapter: PrismaAdapter(prisma),
-
+  session:{
+    strategy: 'jwt',
+  },
   // callbacks: {
   //   session: async({session, token}) => {
-  //     // console.log(user)
-  //     // const isSignIn = user ? true : false
-  //     // if (isSignIn){
-  //     const me = await getMe(session)
-  //     console.log(session)
+  //     console.log(user)
+  //     const isSignIn = user ? true : false
+  //     if (isSignIn){
+  //     // const me = await getMe(session)
+  //       console.log(session)
   //     // ;(session as any).role = me?.role
   //     ;(session as any).subscribed = me?.subscribed
   //     return Promise.resolve(session),
@@ -45,6 +47,25 @@ export default NuxtAuthHandler({
   //   },
 
   // },
+
+  callbacks: {
+    jwt: async({ token, user }) => {
+      if (user) {
+        // token = user;
+        // token = user;
+        token.user=user
+      }
+      return Promise.resolve(token);
+    },
+    session: async ({ session, token }) => {
+      // session callback is called whenever a session for that particular user is checked
+     // in above function we created token.user=user
+      session.user = token.user;
+      // you might return this in new version
+      return Promise.resolve(session)
+    },
+},
+
   providers: [
     // @ts-expect-error You need to use .default here for it to work during SSR. May be fixed via Vite at some point
     // GithubProvider.default({
@@ -78,12 +99,13 @@ export default NuxtAuthHandler({
           return null
         }
         console.log(credentials)
-
+        console.log(user)
+        // ;(session as any).user = user
+        // print('session', session)
+        // ;(session as any).user = user
+        // console.log(session)
         return user
-
-
       }
-      
     })
   ],
 })
