@@ -1,5 +1,16 @@
 <template>
-  <nav :class="isDarkMode ? 'bg-gray-800' : 'bg-purple-600'" class="shadow-md transition duration-300">
+  <div class="flex">
+    
+    <div :class="`sidebar ${isSidebarOpen ? 'sidebar-expanded' : ''} bg-purple-600 text-white`">
+      <button @click="toggleSidebar" class="m-2">Menu</button>
+      <div class="links">
+        <NuxtLink to="/" class="sidebar-link">Football</NuxtLink>
+        <NuxtLink to="/student-life" class="sidebar-link">Basketball</NuxtLink>
+        
+      </div>
+    </div>
+    <div class="flex-1">
+      <nav :class="isDarkMode ? 'bg-gray-800' : 'bg-purple-600'" class="shadow-md transition duration-300">
     <div class="container mx-auto px-4 py-2 flex justify-between items-center">
       <div class="flex items-center space-x-4">
         <NuxtLink to="/" class="text-2xl font-semibold" :class="isDarkMode ? 'text-white' : 'text-white'">
@@ -41,6 +52,10 @@
       </div>
     </div>
   </nav>
+
+  </div>
+  </div>
+  
 </template>
 
 <script>
@@ -49,6 +64,7 @@ export default {
     return {
       isDarkMode: false,
       isMenuOpen: false,
+      isSidebarOpen: false,
     };
   },
   computed: {
@@ -90,10 +106,41 @@ export default {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
     },
+    toggleSidebar() {
+      this.isSidebarOpen = !this.isSidebarOpen;
+    }
   },
 };
 </script>
 
 <style scoped>
-/* Additional custom styles if needed */
+.sidebar {
+  height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  transition: width 0.3s, padding 0.3s;
+  width: 60px; 
+  padding: 0; 
+}
+
+.sidebar-expanded {
+  width: 256px;
+  padding: 10px 15px; 
+}
+
+.sidebar-link {
+  display: block;
+  padding: 10px 0;
+  text-decoration: none;
+  white-space: nowrap; 
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-expanded .sidebar-link {
+  opacity: 1; 
+}
 </style>
