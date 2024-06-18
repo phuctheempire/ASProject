@@ -1,12 +1,13 @@
 <template>
   <div class="flex">
-    
+    <!-- Sidebar -->
     <div :class="`sidebar ${isSidebarOpen ? 'sidebar-expanded' : ''} bg-purple-600 text-white`">
-      <button @click="toggleSidebar" class="m-2">Menu</button>
+      <div class="logo text-center">
+        <img v-if="isSidebarOpen" src="/public/img/menu.png" alt="Full Logo" class="h-12 mx-auto">
+      </div>
       <div class="links">
         <NuxtLink to="/" class="sidebar-link">Football</NuxtLink>
         <NuxtLink to="/student-life" class="sidebar-link">Basketball</NuxtLink>
-        
       </div>
     </div>
     <div class="flex-1">
@@ -18,6 +19,11 @@
         </NuxtLink>
       </div>
       <div class="hidden lg:flex items-center space-x-6">
+        <button @click="toggleSidebar" class="focus:outline-none button-shift-left">
+          <svg class="h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M0 3h20v2H0V3zm0 5h20v2H0V8zm0 5h20v2H0v-2z"/>
+          </svg>
+        </button>
         <NuxtLink to="/" :class="linkClass">Home</NuxtLink>
         <NuxtLink to="/about" :class="linkClass">About</NuxtLink>
         <NuxtLink to="/services" :class="linkClass">Services</NuxtLink>
@@ -115,32 +121,38 @@ export default {
 
 <style scoped>
 .sidebar {
-  height: 100vh;
-  overflow-y: auto;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 1000;
   transition: width 0.3s, padding 0.3s;
-  width: 60px; 
-  padding: 0; 
+  width: 0; /* Minimized width */
+  padding: 0;
+  position: fixed; /* Ensure sidebar is fixed */
+  left: 0; /* Align to the left */
+  top: 0; /* Align to the top */
+  height: 100vh; /* Full height */
+  overflow-y: auto; /* Enable scrolling */
 }
 
 .sidebar-expanded {
-  width: 256px;
-  padding: 10px 15px; 
+  width: 256px; /* Expanded width */
+  padding: 10px 15px;
+}
+
+.button-shift-left {
+  transform: translateX(-700px); /* Déplacez le bouton de 10px vers la gauche */
 }
 
 .sidebar-link {
   display: block;
   padding: 10px 0;
   text-decoration: none;
-  white-space: nowrap; 
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .sidebar-expanded .sidebar-link {
-  opacity: 1; 
+  opacity: 1;
+}
+
+.logo {
+  padding: 10px 0;
 }
 </style>
