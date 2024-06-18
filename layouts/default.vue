@@ -4,6 +4,7 @@
 </script>
 <template>
     <div class="h-screen">
+        <SideBar/>
         <Navbar/>
         <slot/>
     </div>
