@@ -2,6 +2,11 @@
   <div class="flex">
     <!-- Sidebar -->
     <div :class="`sidebar ${isSidebarOpen ? 'sidebar-expanded' : ''} bg-purple-600 text-white`">
+      <button @click="toggleSidebar" class="close-sidebar" aria-label="Close sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-6 w-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
       <div class="logo text-center">
         <img v-if="isSidebarOpen" src="/public/img/menu.png" alt="Full Logo" class="h-12 mx-auto">
       </div>
@@ -122,17 +127,18 @@ export default {
 <style scoped>
 .sidebar {
   transition: width 0.3s, padding 0.3s;
-  width: 0; /* Minimized width */
+  width: 0;
   padding: 0;
-  position: fixed; /* Ensure sidebar is fixed */
-  left: 0; /* Align to the left */
-  top: 0; /* Align to the top */
-  height: 100vh; /* Full height */
-  overflow-y: auto; /* Enable scrolling */
+  position: fixed; 
+  left: 0; 
+  top: 0; 
+  height: 100vh; 
+  overflow-y: auto; 
+  z-index: 1000; 
 }
 
 .sidebar-expanded {
-  width: 256px; /* Expanded width */
+  width: 256px; 
   padding: 10px 15px;
 }
 
@@ -154,5 +160,20 @@ export default {
 
 .logo {
   padding: 10px 0;
+}
+
+.close-sidebar {
+  position: absolute;
+  top: 10px; /* Ajustez la position en haut à droite */
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: white; /* La couleur peut varier selon votre palette de couleurs */
+  cursor: pointer;
+  z-index: 1050; /* Assurez-vous qu'il est au-dessus de tout contenu dans la sidebar */
+}
+
+.close-sidebar svg {
+  fill: white; /* Couleur de l'icône de fermeture */
 }
 </style>
