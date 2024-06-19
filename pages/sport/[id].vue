@@ -1,9 +1,3 @@
-<script setup>
-    // const sport = useFetch('/api/content/sport')
-    // console.log(sport)
-    // const thisSport = sport.data.find(sport => sport.id === $route.params.id)
-
-</script>
 
 <template>
     <div class="container">
@@ -30,14 +24,14 @@
     <strong id="responsables">Responsables :</strong>
     <!-- <div v-for="(item,index) in data.responsables" :key="index"> -->
     <div class="responsable-card">
-    <h3>{{ thisSport }}</h3>
+    <h3>{{ datasport.name }}</h3>
     <p>test@gmail.com</p>
     </div>
     <!-- Cach parcours list -->
     </div>
     <p><strong>Jours et Horaires :</strong></p>
     <!-- <ul>
-    <li v-for="(item,index) in data.jours_horaires" :key="index"> -->
+        <li v-for="(item,index) in data.jours_horaires" :key="index"> -->
     <p>Jeudi</p>
     <p>11h00 - 12h00</p>
     <!-- </li> -->
@@ -50,31 +44,46 @@
     <!--</div>-->
     <!-- </div> -->
     </div>
+    <!-- <h3>{{ typeof dataSport }}</h3> -->
+    <h3>{{ datasport }}</h3>
     </template>
     
+<script setup>
+
+    import { useRoute } from 'vue-router';
+
+    const route = useRoute();
+
+
+    const sport = await useFetch('/api/content/sport')
+    const valsport = sport.data._value
+    const datasport = valsport.filter(item => item.id === parseInt(route.params.id,10))[0];
+    
+
+</script>
     <!-- <script >
     import L from 'leaflet'
     import 'leaflet/dist/leaflet.css'
     
     export default {
-    name: 'BadmintonPage',
-    mounted() {
+        name: 'BadmintonPage',
+        mounted() {
     this.initMap()
     },
     methods: {
-    initMap() {
-    const map = L.map('map').setView([47.0800416, 2.4271166], 13)
-    
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map)
-    
-    L.marker([47.0800416, 2.4271166]).addTo(map)
-    .bindPopup('ICI TEST')
-    .openPopup()
-    }
-    }
-    }
+        initMap() {
+            const map = L.map('map').setView([47.0800416, 2.4271166], 13)
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map)
+                
+                L.marker([47.0800416, 2.4271166]).addTo(map)
+                .bindPopup('ICI TEST')
+                .openPopup()
+                }
+                }
+                }
     
     </script> -->
     
