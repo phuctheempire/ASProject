@@ -115,8 +115,9 @@ const { status, signOut, signIn } = useAuth()
 
 const loggedIn = computed(() => status.value === 'authenticated')
 
-const datasport = await useFetch('/api/content/sport')
-const sport = datasport.data
+const sport = await useFetch('/api/content/sport')
+const valsport = sport.data._value
+console.log(valsport)
 </script>
 
 <style scoped>
