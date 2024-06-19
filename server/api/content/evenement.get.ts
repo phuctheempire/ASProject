@@ -6,7 +6,7 @@ export default eventHandler( async event => {
 
     // const body = await readBody(event)
     // const runtimeConfig = useRuntimeConfig()
-    const evenements = await event.context.prisma.evenement.findMany()
-    return evenements
+    const evenement = await event.context.prisma.evenement.findMany()
+    return evenement
 
 })

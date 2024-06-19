@@ -1,7 +1,16 @@
+<script setup>
+  const e = await useFetch('/api/content/evenement')
+  const evenement = e.data._value
+
+  const a = await useFetch('/api/content/article')
+  const article = a.data._value
+</script>
+
+
 <template>
   <div>
     <nav>
-      <ul class="sport-list">
+      <!-- <ul class="sport-list">
         <li><nuxt-link to="/badminton">Badminton</nuxt-link></li>
         <li><nuxt-link to="/basket">Basket</nuxt-link></li>
         <li><nuxt-link to="/cheer">Cheerleading</nuxt-link></li>
@@ -15,24 +24,20 @@
         <li><nuxt-link to="/aviron">Aviron</nuxt-link></li>
         <li><nuxt-link to="/running">Running</nuxt-link></li>
         <li><nuxt-link to="/responsables">Responsables</nuxt-link></li>
-      </ul>
+      </ul> -->
     </nav>
     <h1 class="welcome-message">Bienvenue sur le site de l'Association Sportive !</h1>
     <section class="news">
       <h2>Actualités</h2>
       <ul>
-        <li>Nouvelle saison de football commence le 1er septembre</li>
-        <li>Stage de basket cet été</li>
-        <li>Équipe de tennis gagne le tournoi régional</li>
+        <li v-for="news in article" :key="news.id">{{ news.title }}</li>
       </ul>
     </section>
 
     <section class="events">
       <h2>Événements à venir</h2>
       <ul>
-        <li>Tournoi de football le 15 juillet</li>
-        <li>Match de basket amical le 20 juillet</li>
-        <li>Compétition d'aviron le 25 juillet</li>
+        <li v-for="event in evenement" :key="event.id">{{ event.title }}</li>
       </ul>
     </section>
 

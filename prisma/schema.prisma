@@ -26,7 +26,7 @@ model sport {
   city              String  
   accid             Int
   acc               users               @relation("sport-acc",fields: [accid], references: [id], onDelete: Cascade)
-  responsables      SportResponsable[]
+  responsables      person[]            @relation("sport-respo")
   article           article[]           @relation("sport-article")
   evenement         evenement[]         @relation("sport-evenement")
   //plan
@@ -56,16 +56,9 @@ model person {
   id                Int                 @id @default(autoincrement())
   name              String              
   email             String  
-  sport             SportResponsable[] 
+  image             String?
+  sportid           Int?
+  sport             sport?               @relation("sport-respo",fields: [sportid], references: [id], onDelete: Cascade)   
+  
   //plan
-}
-
-
-model SportResponsable {
-  id                Int                 @id @default(autoincrement())
-  sportid           Int
-  personid          Int
-  sport             sport               @relation(fields: [sportid], references: [id], onDelete: Cascade)
-  person            person              @relation(fields: [personid], references: [id], onDelete: Cascade)
-  @@unique([sportid, personid])
 }
