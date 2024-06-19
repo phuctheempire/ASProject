@@ -10,7 +10,7 @@
     </button>
 
     <button v-if="!isSidebarOpen" @click="toggleSidebar" class="focus:outline-none button-shift-left">
-      <svg class="h-10 w-10 md:h-10 md:w-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <svg class="h-8 w-10 md:h-10 md:w-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
         <path d="M0 3h20v2H0V3zm0 5h20v2H0V8zm0 5h20v2H0v-2z" />
       </svg>
     </button>
