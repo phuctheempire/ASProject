@@ -57,8 +57,8 @@
 
     const sport = await useFetch('/api/content/sport')
     const valsport = sport.data._value
-    const datasport = valsport.filter(item => item.id === parseInt(route.params.id,10))[0];
-    
+    const datasport = valsport.filter(abc => abc.name === route.params.id);
+    console.log(datasport)
 
 </script>
     <!-- <script >

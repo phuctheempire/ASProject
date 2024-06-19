@@ -18,8 +18,8 @@
         <!-- <img v-if="isSidebarOpen" src="/public/img/icone.png" alt="Full Logo" class="h-12 mx-auto"> -->
       </div>
       <div class="links">
-        <NuxtLink v-for="item in sport" :key="item.id" :to="`/sport/${item.id}`" class="sidebar-link">
-          {{ item.name }}
+        <NuxtLink v-for="item in distinctNames" :to="`/sport/${item}`" class="sidebar-link">
+          {{ item }}
         </NuxtLink>
       </div>
     </div>
@@ -117,7 +117,10 @@ const loggedIn = computed(() => status.value === 'authenticated')
 
 const sport = await useFetch('/api/content/sport')
 const valsport = sport.data._value
-console.log(valsport)
+// console.log(valsport)
+const distinctNames = [...new Set(valsport.map(sport => sport.name))];
+
+// console.log(distinctNames);
 </script>
 
 <style scoped>
