@@ -1,7 +1,12 @@
+<script setup>
+  
+</script>
+
+
 <template>
   <div>
     <nav>
-      <ul class="sport-list">
+      <!-- <ul class="sport-list">
         <li><nuxt-link to="/badminton">Badminton</nuxt-link></li>
         <li><nuxt-link to="/basket">Basket</nuxt-link></li>
         <li><nuxt-link to="/cheer">Cheerleading</nuxt-link></li>
@@ -15,7 +20,7 @@
         <li><nuxt-link to="/aviron">Aviron</nuxt-link></li>
         <li><nuxt-link to="/running">Running</nuxt-link></li>
         <li><nuxt-link to="/responsables">Responsables</nuxt-link></li>
-      </ul>
+      </ul> -->
     </nav>
     <h1 class="welcome-message">Bienvenue sur le site de l'Association Sportive !</h1>
     <section class="news">
