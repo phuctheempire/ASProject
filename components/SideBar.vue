@@ -16,8 +16,9 @@
         <!-- <img v-if="isSidebarOpen" src="/public/img/icone.png" alt="Full Logo" class="h-12 mx-auto"> -->
       </div>
       <div class="links">
-        <NuxtLink to="/" class="sidebar-link">Football</NuxtLink>
-        <NuxtLink to="/student-life" class="sidebar-link">Basketball</NuxtLink>
+        <NuxtLink v-for="item in sport" :key="item.id" :to="`/sport/${item.name}`" class="sidebar-link">
+          {{ item.name }}
+        </NuxtLink>
       </div>
     </div>
   </template>
@@ -35,8 +36,13 @@
     }
   }
   </script>
-  
-  <style scoped>
+
+<script setup >
+const datasport = await useFetch('/api/content/sport')
+const sport = datasport.data
+</script>
+
+<style scoped>
 
 .button-shift-left {
   position: fixed; /* Fixez le bouton en haut à gauche */
