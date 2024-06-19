@@ -8,6 +8,11 @@
         <!-- <h1>Data{{ data }}</h1> -->
          <h1>{{ data }}</h1>
          <p>{{ sport }}</p>
+            <p>{{ article }}</p>
+            <p>{{ evenement }}</p>
+            <p>{{ person }}</p>
+            <p>{{ user }}</p>
+            
     </div>
 </template>
 
@@ -22,6 +27,10 @@ const data = await useFetch('/api/a')
 definePageMeta({ middleware: 'verify' })
 // ----------------------------------
 const sport = await useFetch('/api/content/sport')
+const article = await useFetch('/api/content/article')
+const evenement = await useFetch('/api/content/evenement')
+const person = await useFetch('/api/content/person')
+const user = await useFetch('/api/content/user')
 
 // ----------------------------------
 </script>

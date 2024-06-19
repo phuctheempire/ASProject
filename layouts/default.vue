@@ -25,8 +25,14 @@ export default {
 <style>
 .main-content {
     transition: transform 0.3s ease;
+    padding-top: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
     /* Smooth transition for the transform */
 }
+
+
+
 
 .shifted {
     transform: translateX(256px);
