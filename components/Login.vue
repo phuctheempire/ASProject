@@ -11,14 +11,13 @@
           <h1
             class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white"
           >
-            Welcome back
+            Bienvenue sur le site de l'AS !
           </h1>
 
           <GithubLogin />
 
           <div class="flex items-center">
             <div class="bg-gray-500 h-[.125rem] w-full"></div>
-            <p class="mx-8 text-medium text-gray-500">or</p>
             <div class="bg-gray-500 h-[.125rem] w-full"></div>
           </div>
 

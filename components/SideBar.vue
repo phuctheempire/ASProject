@@ -16,7 +16,7 @@
         <!-- <img v-if="isSidebarOpen" src="/public/img/icone.png" alt="Full Logo" class="h-12 mx-auto"> -->
       </div>
       <div class="links">
-        <NuxtLink v-for="item in sport" :key="item.id" :to="`/sport/${item.name}`" class="sidebar-link">
+        <NuxtLink v-for="item in sport" :key="item.id" :to="`/sport/${item.name}`" class="sidebar-link custom-font">
           {{ item.name }}
         </NuxtLink>
       </div>
@@ -44,6 +44,8 @@ const sport = datasport.data
 
 <style scoped>
 
+
+
 .button-shift-left {
   position: fixed; /* Fixez le bouton en haut à gauche */
   left: 10px; /* Décalez de 10px du bord gauche */
@@ -63,6 +65,8 @@ const sport = datasport.data
       overflow-y: auto;
       z-index: 1000;
     }
+
+
     .sidebar-expanded {
       width: 256px;
       padding: 10px 15px;
