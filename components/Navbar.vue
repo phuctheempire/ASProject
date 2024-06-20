@@ -1,18 +1,26 @@
 <template>
   <!-- Navbar ------------------------- -->
-  <nav class="navbar fixed-nav py-2">
+  <nav class="py-2 border-purple-200 bg-purple-50 dark:bg-purple-900 fixed-nav">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <div class="hidden w-full md:block md:w-auto ml-auto" id="navbar-default">
-        <ul v-if="!isMobile" class="nav-links font-medium flex items-center md:flex-row md:space-x-8 md:mt-0">
+        <ul v-if="!isMobile" class="font-medium flex items-center border-purple-100 md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:border-purple-700">
           <li>
-            <NuxtLink to="/" class="nav-link" aria-current="page">Home</NuxtLink>
+            <NuxtLink to="/" class="block pl-3 pr-4 md:bg-transparent md:hover:text-purple-700 md:p-0 dark:text-white md:dark:text-purple-500" aria-current="page">
+              Home
+            </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/login/protected" class="nav-link" aria-current="page">Protected</NuxtLink>
+            <NuxtLink to="/login/protected" class="block pl-3 pr-4 md:bg-transparent md:hover:text-purple-700 md:p-0 dark:text-white md:dark:text-purple-500" aria-current="page">
+              Protected
+            </NuxtLink>
           </li>
           <li>
-            <button v-if="loggedIn" class="nav-link" @click="signOut()">Sign out</button>
-            <button v-else class="nav-link" @click="signIn()">Sign In</button>
+            <button v-if="loggedIn" class="block pl-3 pr-4 md:bg-transparent md:hover:text-purple-700 md:p-0 dark:text-white md:dark:text-purple-500" @click="signOut()">
+              Sign out
+            </button>
+            <button v-else class="block pl-3 pr-4 md:bg-transparent md:hover:text-purple-700 md:p-0 dark:text-white md:dark:text-purple-500" @click="signIn()">
+              Sign In
+            </button>
           </li>
         </ul>
       </div>
@@ -46,8 +54,12 @@
     <div class="links" v-if="isMobile">
       <NuxtLink to="/" class="sidebar-link">Home</NuxtLink>
       <NuxtLink to="/login/protected" class="sidebar-link">Protected</NuxtLink>
-      <button v-if="loggedIn" class="sidebar-link" @click="signOut()">Sign out</button>
-      <button v-else class="sidebar-link" @click="signIn()">Sign In</button>
+      <button v-if="loggedIn" class="sidebar-link" @click="signOut()">
+        Sign out
+      </button>
+      <button v-else class="sidebar-link" @click="signIn()">
+        Sign In
+      </button>
     </div>
   </div>
 </template>
@@ -93,30 +105,13 @@ const distinctNames = [...new Set(valsport.map(sport => sport.name))];
 </script>
 
 <style scoped>
-/* Navbar Styling */
-.navbar {
-  background: linear-gradient(145deg, #3b82f6, #9333ea);
-  transition: background-color 0.3s ease;
+.fixed-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-.nav-links {
-  display: flex;
-  gap: 1rem;
-}
-
-.nav-link {
-  padding: 0.5rem 1rem;
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-.nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #fbbf24; /* Amber color */
-}
-
-/* Sidebar Styling */
 .button-shift-left {
   position: fixed;
   left: 10px;
