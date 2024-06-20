@@ -1,67 +1,176 @@
-
 <template>
-    <div class="container">
     <div class="relative">
-    <nuxt-link to="/" class="absolute top-4 right-4 btn-back">
-    Retour à l'accueil
-    </nuxt-link>
+        <nuxt-link to="/" class="absolute top-4 right-4 btn-back">
+            Retour à l'accueil
+        </nuxt-link>
+        <div class="button-container">
+            <div class="button-frame">
+                <button @click="selectCity('bourges')" class="bourges">
+                    Bourges
+                </button>
+            </div>
+            <div class="button-frame">
+                <button @click="selectCity('blois')" class="blois">
+                    Blois
+                </button>
+            </div>
+        </div>
     </div>
-    <div>
-    <!-- <h1><ContentRenderer :value="data"></ContentRenderer></h1> -->
-    <!-- Bo phan markdown ( Noi dung o duoi --- ) -->
+
+
+    <!-- Information bourges -->
+    <div v-if="selectedCity === 'bourges'">
+        <div class="image-container">
+            <div class="overlay">
+                <div class="text">{{ $route.params.id }}</div>
+            </div>
+        </div>
+
+        <div class="info">
+            <h2>Informations</h2>
+            <div>
+                <strong id="responsables">Responsables :</strong>
+                <div v-for="(item) in dataresponsable_bourges" :key="item.id" class="responsable-card">
+                    <img src="/img/respovolley.jpeg" alt="Photo du responsable" class="responsable-photo">
+                    <h3>{{ item.name }}</h3>
+                    <p>{{ item.email }}</p>
+                </div>
+                <!-- Cach parcours list -->
+            </div>
+
+            <div>
+                <strong id="jours-horaires">Jours et Horaires :</strong>
+                <div v-for="(item) in dataplan_bourges" :key="item.id" class="responsable-card">
+                    <h3>{{ item.date }}</h3>
+                    <p>{{ item.time }}</p>
+                    <h3>{{ item.lieu }}</h3>
+                </div>
+            </div>
+
+            <div>
+                <strong id="actualite">Actualites :</strong>
+                <div v-for="(item) in dataarticle_bourges" :key="item.id" class="responsable-card">
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.description }}</p>
+                </div>
+            </div>
+
+            <div>
+                <strong id="evenement">Evenements :</strong>
+                <div v-for="(item) in dataevenement_bourges" :key="item.id" class="responsable-card">
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.plan }}</p>
+                </div>
+            </div>
+
+        </div>
     </div>
-   
-    <div class="image-container">
-    <img src="/img/respovolley.jpeg" alt="Photo du responsable" class="responsable-photo">
-    <div class="overlay">
-    <div class="text">{{ $route.params.id }}</div>
+
+    <!-- Information blois -->
+    <div v-if="selectedCity === 'blois'">
+        <div class="image-container">
+            <div class="overlay">
+                <div class="text">{{ $route.params.id }}</div>
+            </div>
+        </div>
+
+        <div class="info">
+            <h2>Informations</h2>
+            <div>
+                <strong id="responsables">Responsables :</strong>
+                <div v-for="(item) in dataresponsable_blois" :key="item.id" class="responsable-card">
+                    <img src="/img/respovolley.jpeg" alt="Photo du responsable" class="responsable-photo">
+                    <h3>{{ item.name }}</h3>
+                    <p>{{ item.email }}</p>
+                </div>
+                <!-- Cach parcours list -->
+            </div>
+
+            <div>
+                <strong id="jours-horaires">Jours et Horaires :</strong>
+                <div v-for="(item) in dataplan_blois" :key="item.id" class="responsable-card">
+                    <h3>{{ item.date }}</h3>
+                    <p>{{ item.time }}</p>
+                    <h3>{{ item.lieu }}</h3>
+                </div>
+            </div>
+
+            <div>
+                <strong id="actualite">Actualites :</strong>
+                <div v-for="(item) in dataarticle_blois" :key="item.id" class="responsable-card">
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.description }}</p>
+                </div>
+            </div>
+
+            <div>
+                <strong id="evenement">Evenements :</strong>
+                <div v-for="(item) in dataevenement_blois" :key="item.id" class="responsable-card">
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.plan }}</p>
+                </div>
+            </div>
+
+        </div>
     </div>
-    </div>
-   
-    <div class="info">
-    <h2>Informations</h2>
-    <div>
-    <strong id="responsables">Responsables :</strong>
-    <!-- <div v-for="(item,index) in data.responsables" :key="index"> -->
-    <div class="responsable-card">
-    <h3>{{ datasport.name }}</h3>
-    <p>test@gmail.com</p>
-    </div>
-    <!-- Cach parcours list -->
-    </div>
-    <p><strong>Jours et Horaires :</strong></p>
-    <!-- <ul>
-        <li v-for="(item,index) in data.jours_horaires" :key="index"> -->
-    <p>Jeudi</p>
-    <p>11h00 - 12h00</p>
-    <!-- </li> -->
-    <!-- </ul> -->
-    <h2>Lieu</h2>
-    <p>test.lieu</p>
-    </div>
-    <!--<div class="location">-->
-    <!-- <div id="map"></div> -->
-    <!--</div>-->
-    <!-- </div> -->
-    </div>
-    <!-- <h3>{{ typeof dataSport }}</h3> -->
-    <h3>{{ datasport }}</h3>
-    </template>
-    
+    <!-- <h3>{{ dataresponsable }}</h3>
+    <h3>{{ dataplan }}</h3>
+    <h3>{{ dataarticle }}</h3> -->
+</template>
+
+
+
 <script setup>
 
-    import { useRoute } from 'vue-router';
+import { useRoute } from 'vue-router';
+import { ref } from 'vue';
 
-    const route = useRoute();
+const route = useRoute();
+const selectedCity = ref(null);
+const selectCity = (city) => {
+    selectedCity.value = city;
+};
 
+const sport = await useFetch('/api/content/sport')
+const person = await useFetch('/api/content/person')
+const plan = await useFetch('/api/content/plan')
+const article = await useFetch('/api/content/article')
+const evenement = await useFetch('/api/content/evenement')
+const sport_plan = await useFetch('/api/content/sport_plan')
 
-    const sport = await useFetch('/api/content/sport')
-    const valsport = sport.data._value
-    const datasport = valsport.filter(abc => abc.name === route.params.id);
-    console.log(datasport)
+const valsport = sport.data._value
+const valperson = person.data._value
+const valplan = plan.data._value
+const valarticle = article.data._value
+const valevenement = evenement.data._value
+const valsport_plan = sport_plan.data._value
+
+const datasport = valsport.filter(abc => abc.name === route.params.id);
+const datasport_bourges = valsport.filter(abc => abc.name === route.params.id && abc.city === 'Bourges');
+const datasport_blois = valsport.filter(abc => abc.name === route.params.id && abc.city === 'Blois');
+
+const dataresponsable_bourges = valperson.filter(abc => abc.sportid === datasport_bourges[0].id)
+const dataresponsable_blois = valperson.filter(abc => abc.sportid === datasport_blois[0].id)
+
+const datasport_plan_bourges = valsport_plan.filter(SportPlan => SportPlan.sportid === datasport_bourges[0].id)
+const datasport_plan_blois = valsport_plan.filter(SportPlan => SportPlan.sportid === datasport_blois[0].id)
+
+const planIds_bourges = datasport_plan_bourges.map(sportPlan => sportPlan.planid);
+const planIds_blois = datasport_plan_blois.map(sportPlan => sportPlan.planid);
+
+const dataplan_bourges = valplan.filter(plan => planIds_bourges.includes(plan.id));
+const dataplan_blois = valplan.filter(plan => planIds_blois.includes(plan.id));
+
+const dataarticle_bourges = valarticle.filter(abc => abc.categoryid === datasport_bourges[0].id)
+const dataarticle_blois = valarticle.filter(abc => abc.categoryid === datasport_blois[0].id)
+
+const dataevenement_bourges = valevenement.filter(abc => abc.categoryid === datasport_bourges[0].id)
+const dataevenement_blois = valevenement.filter(abc => abc.categoryid === datasport_blois[0].id)
+
+console.log(datasport)
 
 </script>
-    <!-- <script >
+<!-- <script >
     import L from 'leaflet'
     import 'leaflet/dist/leaflet.css'
     
@@ -86,21 +195,21 @@
                 }
     
     </script> -->
-    
-    <!-- <script setup>
+
+<!-- <script setup>
     let { data } = await useAsyncData('badminton', () => queryContent('/badminton').findOne())
     console.log(data)
     console.log('hello')
     </script> -->
-    
-    <style scoped>
-    body {
+
+<style scoped>
+body {
     background-color: #f8f9fa;
     margin: 0;
     font-family: 'Lato', sans-serif;
-    }
-    
-    .container {
+}
+
+.container {
     color: #333;
     padding: 20px;
     max-width: 1200px;
@@ -108,103 +217,113 @@
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    }
-    
-    .relative {
+}
+
+.relative {
     position: relative;
-    }
-    
-    .btn-back {
-    background-color: #6200ea; /* Violet */
+}
+
+.btn-back {
+    background-color: #6200ea;
+    /* Violet */
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
-    }
-    
-    .btn-back:hover {
+}
+
+.btn-back:hover {
     background-color: #3700b3;
-    }
-    
-    .info, .location {
+}
+
+.info,
+.location {
     margin-bottom: 20px;
-    }
-    
-    h1, h2 {
-    color: #6200ea; /* Violet */
-    }
-    
-    h1 {
+}
+
+h1,
+h2 {
+    color: #6200ea;
+    /* Violet */
+}
+
+h1 {
     font-size: 2em;
     text-align: center;
     font-weight: bold;
     margin-bottom: 20px;
-    }
-    
-    h2 {
+}
+
+h2 {
     font-size: 2.5em;
     font-weight: bold;
     margin-top: 20px;
-    }
-    
-    h3 {
+}
+
+h3 {
     font-size: 1.4em;
     margin-top: 10px;
     font-weight: bold;
-    }
-    
-    p, ul {
+}
+
+p,
+ul {
     font-size: 1.2em;
     color: #555;
-    }
-    
-    ul {
+}
+
+ul {
     list-style-type: disc;
     margin-left: 20px;
-    }
-    
-    #map {
+}
+
+#map {
     height: 400px;
     width: 100%;
     margin-top: 20px;
-    }
-    
-    .nav {
+}
+
+.nav {
     text-align: center;
     margin-top: 30px;
-    }
-    
-    strong#responsables {
+}
+
+strong#responsables,
+#jours-horaires,
+#actualite,
+#evenement {
     font-size: 2em;
     font-weight: bold;
-    }
-    
-    .responsable-card {
+}
+
+
+
+.responsable-card {
     display: inline-block;
     margin: 20px;
     text-align: center;
-    }
-    
-    .image-container {
-    text-align : center;
+}
+
+.image-container {
+    text-align: center;
     position: relative;
     width: 150px;
     height: 150px;
-    margin-bottom : 20px;
+    margin-bottom: 20px;
     border-radius: 50%;
     overflow: hidden;
-    }
-    
-    .responsable-photo {
+}
+
+.responsable-photo {
     max-width: 100%;
     height: auto;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    
-    .overlay {
+}
+
+.overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -218,18 +337,18 @@
     opacity: 0;
     transition: opacity 0.3s ease;
     border-radius: 50%;
-    }
-    
-    .image-container:hover .overlay {
+}
+
+.image-container:hover .overlay {
     opacity: 1;
-    }
-    
-    .text {
+}
+
+.text {
     font-size: 1.2em;
     text-align: center;
-    }
-    </style>
-    
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
-    </style>
+}
+</style>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+</style>
