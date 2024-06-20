@@ -20,6 +20,9 @@ export default defineNuxtConfig({
   // auth: {
   //   globalAppMiddleware: true,
   // },
+  auth: {
+    baseURL: process.env.AUTH_ORIGIN
+    },
   runtimeConfig: {
     GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
     API_ROUTE_SECRET: process.env.API_ROUTE_SECRET,
