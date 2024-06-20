@@ -29,24 +29,19 @@ model sport {
   responsables      person[]            @relation("sport-respo")
   article           article[]           @relation("sport-article")
   evenement         evenement[]         @relation("sport-evenement")
-  plan              sport_plan[]        
+  plan              plan[]              @relation("sport-plan")
   @@unique([name,city]) 
 }
 
-model sport_plan {
-  id                Int                 @id @default(autoincrement())
-  sportid           Int
-  planid            Int
-  sport             sport               @relation(fields: [sportid], references: [id], onDelete: Cascade) 
-  plan              plan                @relation(fields: [planid], references: [id], onDelete: Cascade) 
-}
 
 model plan {
   id                Int                 @id @default(autoincrement())
   date              String              
   time              String  
   lieu              String  
-  sport             sport_plan[]
+  sportid           Int
+  sport             sport               @relation("sport-plan",fields: [sportid], references: [id], onDelete: Cascade)   
+  
 }
 
 model article {
