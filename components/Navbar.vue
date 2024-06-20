@@ -1,67 +1,83 @@
 <template>
   <!-- Navbar ------------------------- -->
-  <nav class="py-2 border-purple-200 bg-purple-50 dark:bg-purple-900 fixed-nav">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <div class="hidden w-full md:block md:w-auto ml-auto" id="navbar-default">
-        <ul v-if="!isMobile" class="font-medium flex items-center border-purple-100 md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:border-purple-700">
-          <li>
-            <NuxtLink to="/" class="block pl-3 pr-4 md:bg-transparent md:hover:text-purple-700 md:p-0 dark:text-white md:dark:text-purple-500" aria-current="page">
-              Home
-            </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/login/protected" class="block pl-3 pr-4 md:bg-transparent md:hover:text-purple-700 md:p-0 dark:text-white md:dark:text-purple-500" aria-current="page">
-              Protected
-            </NuxtLink>
-          </li>
-          <li>
-            <button v-if="loggedIn" class="block pl-3 pr-4 md:bg-transparent md:hover:text-purple-700 md:p-0 dark:text-white md:dark:text-purple-500" @click="signOut()">
-              Sign out
-            </button>
-            <button v-else class="block pl-3 pr-4 md:bg-transparent md:hover:text-purple-700 md:p-0 dark:text-white md:dark:text-purple-500" @click="signIn()">
-              Sign In
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <div :class="`sidebar ${isSidebarOpen ? 'sidebar-expanded' : ''}`">
-    <!-- Bouton pour fermer le sidebar -->
-    <button @click="toggleSidebar" class="close-sidebar" aria-label="Close sidebar">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-6 w-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
-
-    <button v-if="!isSidebarOpen" @click="toggleSidebar" class="focus:outline-none button-shift-left">
-      <svg class="h-8 w-10 md:h-10 md:w-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-        <path d="M0 3h20v2H0V3zm0 5h20v2H0V8zm0 5h20v2H0v-2z" />
-      </svg>
-    </button>
-
-    <div class="logo text-center">
-      <img v-if="isSidebarOpen" src="/public/img/logoAS.png" alt="Full Logo" class="h-12 mx-auto">
-    </div>
-
-    <div class="links">
-      <NuxtLink v-for="item in distinctNames" :to="`/sport/${item}`" class="sidebar-link">
-        {{ item }}
-      </NuxtLink>
-    </div>
-
-    <div class="links" v-if="isMobile">
-      <NuxtLink to="/" class="sidebar-link">Home</NuxtLink>
-      <NuxtLink to="/login/protected" class="sidebar-link">Protected</NuxtLink>
-      <button v-if="loggedIn" class="sidebar-link" @click="signOut()">
-        Sign out
-      </button>
-      <button v-else class="sidebar-link" @click="signIn()">
-        Sign In
-      </button>
+  <nav class="py-2 border-purple-200 bg-purple-200 dark:bg-purple-800 fixed-nav transition duration-500 ease-in-out transform hover:bg-purple-300 dark:hover:bg-purple-700">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <div class="hidden w-full md:block md:w-auto ml-auto" id="navbar-default">
+      <ul v-if="!isMobile" class="font-medium flex items-center border-purple-100 md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:border-purple-700">
+        <li>
+          <NuxtLink 
+            to="/" 
+            class="block pl-3 pr-4 md:bg-transparent md:hover:text-purple-800 md:p-0 dark:text-white md:dark:text-purple-300 transition duration-500 ease-in-out transform hover:scale-110 hover:text-purple-900 dark:hover:text-purple-400" 
+            aria-current="page">
+            Home
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink 
+            to="/login/protected" 
+            class="block pl-3 pr-4 md:bg-transparent md:hover:text-purple-800 md:p-0 dark:text-white md:dark:text-purple-300 transition duration-500 ease-in-out transform hover:scale-110 hover:text-purple-900 dark:hover:text-purple-400" 
+            aria-current="page">
+            Protected
+          </NuxtLink>
+        </li>
+        <li>
+          <button 
+            v-if="loggedIn" 
+            class="block pl-3 pr-4 md:bg-transparent md:hover:text-purple-800 md:p-0 dark:text-white md:dark:text-purple-300 transition duration-500 ease-in-out transform hover:scale-110 hover:text-purple-900 dark:hover:text-purple-400" 
+            @click="signOut()">
+            Sign out
+          </button>
+          <button 
+            v-else 
+            class="block pl-3 pr-4 md:bg-transparent md:hover:text-purple-800 md:p-0 dark:text-white md:dark:text-purple-300 transition duration-500 ease-in-out transform hover:scale-110 hover:text-purple-900 dark:hover:text-purple-400" 
+            @click="signIn()">
+            Sign In
+          </button>
+        </li>
+      </ul>
     </div>
   </div>
+</nav>
+
+
+
+<div :class="`sidebar ${isSidebarOpen ? 'sidebar-expanded' : ''} bg-gradient-to-r from-purple-500 to-purple-700 dark:from-purple-800 dark:to-purple-900 transition-all duration-500 ease-in-out`">
+  <!-- Button to close the sidebar -->
+  <button @click="toggleSidebar" class="close-sidebar focus:outline-none transition duration-500 ease-in-out transform hover:scale-110" aria-label="Close sidebar">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-6 w-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <button v-if="!isSidebarOpen" @click="toggleSidebar" class="focus:outline-none button-shift-left transition duration-500 ease-in-out transform hover:scale-110">
+    <svg class="h-8 w-10 md:h-10 md:w-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M0 3h20v2H0V3zm0 5h20v2H0V8zm0 5h20v2H0v-2z" />
+    </svg>
+  </button>
+
+  <div class="logo text-center transition duration-500 ease-in-out transform hover:scale-110">
+    <img v-if="isSidebarOpen" src="/public/img/logoAS.png" alt="Full Logo" class="h-24 w-auto mx-auto">
+</div>
+
+
+  <div class="links">
+    <NuxtLink v-for="item in distinctNames" :to="`/sport/${item}`" class="sidebar-link transition duration-500 ease-in-out transform hover:scale-110 hover:text-purple-200">
+      {{ item }}
+    </NuxtLink>
+  </div>
+
+  <div class="links" v-if="isMobile">
+    <NuxtLink to="/" class="sidebar-link transition duration-500 ease-in-out transform hover:scale-110 hover:text-purple-200">Home</NuxtLink>
+    <NuxtLink to="/login/protected" class="sidebar-link transition duration-500 ease-in-out transform hover:scale-110 hover:text-purple-200">Protected</NuxtLink>
+    <button v-if="loggedIn" class="sidebar-link transition duration-500 ease-in-out transform hover:scale-110 hover:text-purple-200" @click="signOut()">
+      Sign out
+    </button>
+    <button v-else class="sidebar-link transition duration-500 ease-in-out transform hover:scale-110 hover:text-purple-200" @click="signIn()">
+      Sign In
+    </button>
+  </div>
+</div>
+
 </template>
 
 <script>
@@ -130,7 +146,7 @@ const distinctNames = [...new Set(valsport.map(sport => sport.name))];
   height: 100vh;
   overflow-y: auto;
   z-index: 1000;
-  background: linear-gradient(145deg, #3b82f6, #9333ea);
+  background: linear-gradient(145deg, #ae00ff, #000000);
   box-shadow: 2px 0 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -141,11 +157,11 @@ const distinctNames = [...new Set(valsport.map(sport => sport.name))];
 
 .sidebar-link {
   display: block;
-  padding: 10px 0;
+  padding: 10px 10px;
   text-decoration: none;
   color: white;
   opacity: 0;
-  transform: translateX(-20px);
+  /* transform: translateX(-20px); */
   transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
 }
 
