@@ -5,12 +5,12 @@
         </nuxt-link>
         <div class="button-container">
             <div class="button-frame">
-                <button @click="selectCity('bourges')" class="bourges">
+                <button @click="selectCity('bourges')" class="button">
                     Bourges
                 </button>
             </div>
             <div class="button-frame">
-                <button @click="selectCity('blois')" class="blois">
+                <button @click="selectCity('blois')" class="button">
                     Blois
                 </button>
             </div>
@@ -136,30 +136,24 @@ const person = await useFetch('/api/content/person')
 const plan = await useFetch('/api/content/plan')
 const article = await useFetch('/api/content/article')
 const evenement = await useFetch('/api/content/evenement')
-const sport_plan = await useFetch('/api/content/sport_plan')
 
 const valsport = sport.data._value
 const valperson = person.data._value
 const valplan = plan.data._value
 const valarticle = article.data._value
 const valevenement = evenement.data._value
-const valsport_plan = sport_plan.data._value
 
-const datasport = valsport.filter(abc => abc.name === route.params.id);
+// const datasport = valsport.filter(abc => abc.name === route.params.id);
+// const dataplan = valplan.filter(abc => abc.name === route.params.id);
+
 const datasport_bourges = valsport.filter(abc => abc.name === route.params.id && abc.city === 'Bourges');
 const datasport_blois = valsport.filter(abc => abc.name === route.params.id && abc.city === 'Blois');
 
 const dataresponsable_bourges = valperson.filter(abc => abc.sportid === datasport_bourges[0].id)
 const dataresponsable_blois = valperson.filter(abc => abc.sportid === datasport_blois[0].id)
 
-const datasport_plan_bourges = valsport_plan.filter(SportPlan => SportPlan.sportid === datasport_bourges[0].id)
-const datasport_plan_blois = valsport_plan.filter(SportPlan => SportPlan.sportid === datasport_blois[0].id)
-
-const planIds_bourges = datasport_plan_bourges.map(sportPlan => sportPlan.planid);
-const planIds_blois = datasport_plan_blois.map(sportPlan => sportPlan.planid);
-
-const dataplan_bourges = valplan.filter(plan => planIds_bourges.includes(plan.id));
-const dataplan_blois = valplan.filter(plan => planIds_blois.includes(plan.id));
+const dataplan_bourges = valplan.filter(abc => abc.sportid === datasport_bourges[0].id)
+const dataplan_blois = valplan.filter(abc => abc.sportid === datasport_blois[0].id)
 
 const dataarticle_bourges = valarticle.filter(abc => abc.categoryid === datasport_bourges[0].id)
 const dataarticle_blois = valarticle.filter(abc => abc.categoryid === datasport_blois[0].id)
@@ -167,7 +161,7 @@ const dataarticle_blois = valarticle.filter(abc => abc.categoryid === datasport_
 const dataevenement_bourges = valevenement.filter(abc => abc.categoryid === datasport_bourges[0].id)
 const dataevenement_blois = valevenement.filter(abc => abc.categoryid === datasport_blois[0].id)
 
-console.log(datasport)
+// console.log(datasport)
 
 </script>
 <!-- <script >
@@ -234,6 +228,15 @@ body {
     transition: background-color 0.3s ease;
 }
 
+.button {
+    background-color: #bc8ffd;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border-radius: 9px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
 .btn-back:hover {
     background-color: #3700b3;
 }

@@ -38,7 +38,9 @@
             <button @click="editNews(index)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Modifier</button>
           </div>
           <div v-else>
-            <form class="space-y-4">
+            <form class="space-y-4"
+              @submit.prevent="modifierActu(index)"
+            >
               <!-- Form fields for editing news -->
               <div>
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="news-title">
@@ -58,7 +60,7 @@
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="news-image" type="text" v-model="news.image" placeholder="Entrez l'URL de l'image">
               </div>
-              <button type="button" @click="updateNews(index)" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Enregistrer</button>
+              <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Enregistrer</button>
               <button type="button" @click="cancelEditNews(index)" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Annuler</button>
             </form>
           </div>
@@ -117,13 +119,14 @@
           </div>
           <div v-else>
             <form class="space-y-4"
+             @submit.prevent="modifierEvenement(index)"
             >
               <!-- Form fields for editing event -->
               <div>
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="event-title">
                   Titre
                 </label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="event-title" type="text" v-model="event.titre" placeholder="Entrez le titre">
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="event-title" type="text" v-model="event.title" placeholder="Entrez le titre">
               </div>
               <div>
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="event-plan">
@@ -131,7 +134,8 @@
                 </label>
                 <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="event-plan" v-model="event.plan" placeholder="Entrez le plan"></textarea>
               </div>
-              <button type="button" @click="updateEvent(index)" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Enregistrer</button>
+              <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Enregistrer</button>
+              <button @click="cancelEditEvent(index)" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Annuler</button>
             </form>
           </div>
           <button @click="deleteEvent(index)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4">Supprimer</button>
@@ -215,14 +219,42 @@ const cancelEditNews = (index) => {
   // Optionally reset form fields or perform other actions needed on cancel
 };
 
+
+const cancelEditEvent = (index) => {
+  events.value[index].isEditing = false;
+  // Optionally reset form fields or perform other actions needed on cancel
+};
+
 const updateNews = (index) => {
   actualites.value[index].isEditing = false;
   // Save changes logic
 };
 
+const modifierActu = async(index) => {
+  const { data, error } = await useFetch(`/api/modifiable/updateActu`, {
+        method: "POST",
+        body: {
+            title: actualites.value[index].title,
+            description: actualites.value[index].description,
+            image: actualites.value[index].image,
+            id: actualites.value[index].id
+        }
+    })
+    actualites.value[index].isEditing = false;
+    window.location.reload()
+}
+
 const deleteNews = (index) => {
-  actualites.value.splice(index, 1);
+  const {data, error} = useFetch(`/api/modifiable/deleteActu`, {
+    method: "POST",
+    body: {
+      id: actualites.value[index].id
+    }
+  })
+  window.location.reload()
 };
+
+
 
 const addNews = () => {
   actualites.value.push({ ...newNews.value, isEditing: false });
@@ -255,8 +287,27 @@ const updateEvent = (index) => {
   // Save changes logic
 };
 
+const modifierEvenement = async(index) => {
+  const { data, error } = await useFetch(`/api/modifiable/updateEvenement`, {
+        method: "POST",
+        body: {
+            title: events.value[index].title,
+            plan: events.value[index].plan,
+            id: events.value[index].id
+        }
+    })
+    actualites.value[index].isEditing = false;
+    window.location.reload()
+}
+
 const deleteEvent = (index) => {
-  events.value.splice(index, 1);
+  const {data, error} = useFetch(`/api/modifiable/deleteEvenement`, {
+    method: "POST",
+    body: {
+      id: events.value[index].id
+    }
+  })
+  window.location.reload()
 };
 
 const addEvent = () => {
@@ -266,7 +317,7 @@ const addEvent = () => {
   // Save new event logic
 };
 
-const adjoutEvenement = async() => {
+const adjoutEvenement = async( ) => {
   const { data, error } = await useFetch(`/api/modifiable/addEvenement`, {
         method: "POST",
         body: {
