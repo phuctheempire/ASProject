@@ -17,17 +17,17 @@
                 <div class="editable-field">
                     <p><strong>Responsables:</strong></p>
                     <div v-for="(item) in dataresponsable_bourges" :key="item.id" class="responsable-card">
-                        <img src="/img/respovolley.jpeg" alt="Photo du responsable" class="responsable-photo">
+                        <img v-bind:src="item.image" alt="Photo du responsable" class="responsable-photo">
                         <h3>{{ item.name }}</h3>
-                        <p>{{ item.email }}</p>
+                        <p style="font-size: 15px; font-style: italic;">{{ item.email }}</p>
                     </div>
                 </div>
 
                 <div class="editable-field">
                     <p><strong>Jours et Horaire:</strong></p>
                     <div v-for="(item) in dataplan_bourges" :key="item.id" class="horraire-entry">
-                        <h3>{{ item.date }}</h3>
-                        <p>{{ item.time }}</p>
+                        <h3>{{ item.date }}:</h3>
+                        <p>{{ item.time }} - </p>
                         <h3>{{ item.lieu }}</h3>
                     </div>
                 </div>
