@@ -295,7 +295,7 @@ const cancelEditHoraire = (index) => {
   // Optionally reset form fields or perform other actions needed on cancel
 };
 const deleteHoraire = (index) => {
-  const {data, error} = useFetch(`/api/modifiable/deletePlan`, {
+  const {data, error} = useFetch(`/api/modifiable/deleteHoraires`, {
     method: "POST",
     body: {
       id: horaires.value[index].id
@@ -304,7 +304,7 @@ const deleteHoraire = (index) => {
   window.location.reload()
 };
 const modifierHoraire = async(index) => {
-  const { data, error } = await useFetch(`/api/modifiable/updatePlan`, {
+  const { data, error } = await useFetch(`/api/modifiable/updateHoraires`, {
     method: "POST",
     body: {
       date: horaires.value[index].date,
@@ -317,7 +317,7 @@ const modifierHoraire = async(index) => {
   window.location.reload()
 }
 const ajoutHoraire = async() => {
-  const { data, error } = await useFetch(`/api/modifiable/addPlan`, {
+  const { data, error } = await useFetch(`/api/modifiable/addHoraires`, {
     method: "POST",
     body: {
       date: newHoraire.value.date,
