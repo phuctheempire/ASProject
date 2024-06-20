@@ -14,30 +14,33 @@
         </li>
         <li>
           <NuxtLink 
-            to="/login/protected" 
+            to="/modifiable" 
             class="block pl-3 pr-4 md:bg-transparent md:hover:text-purple-800 md:p-0 dark:text-white md:dark:text-purple-300 transition duration-500 ease-in-out transform hover:scale-110 hover:text-purple-900 dark:hover:text-purple-400" 
             aria-current="page">
-            Protected
+            Modifiez les activités de l'Association
           </NuxtLink>
         </li>
         <li>
-          <button 
-            v-if="loggedIn" 
-            class="block pl-3 pr-4 md:bg-transparent md:hover:text-purple-800 md:p-0 dark:text-white md:dark:text-purple-300 transition duration-500 ease-in-out transform hover:scale-110 hover:text-purple-900 dark:hover:text-purple-400" 
-            @click="signOut()">
-            Sign out
-          </button>
-          <button 
-            v-else 
-            class="block pl-3 pr-4 md:bg-transparent md:hover:text-purple-800 md:p-0 dark:text-white md:dark:text-purple-300 transition duration-500 ease-in-out transform hover:scale-110 hover:text-purple-900 dark:hover:text-purple-400" 
-            @click="signIn()">
-            Sign In
-          </button>
+          <div class="ml-auto">
+            <button 
+              v-if="loggedIn" 
+              class="block pl-3 pr-4 md:bg-transparent md:hover:text-purple-800 md:p-0 dark:text-white md:dark:text-purple-300 transition duration-500 ease-in-out transform hover:scale-110 hover:text-purple-900 dark:hover:text-purple-400" 
+              @click="signOut()">
+              Sign out
+            </button>
+            <button 
+              v-else 
+              class="block pl-3 pr-4 md:bg-transparent md:hover:text-purple-800 md:p-0 dark:text-white md:dark:text-purple-300 transition duration-500 ease-in-out transform hover:scale-110 hover:text-purple-900 dark:hover:text-purple-400" 
+              @click="signIn()">
+              Sign In
+            </button>
+          </div>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+
 
 
 
