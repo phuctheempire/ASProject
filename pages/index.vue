@@ -13,6 +13,7 @@ const allEvenements = evenements.data._value
 <template>
  <div>
  <h1 class="welcome-message">Bienvenue sur le site de l'Association Sportive !</h1>
+ <!-- <h1 class=""></h1> -->
  <div class="welcome-image">
  <!-- <img src="/public/img/sport.png" alt="Sports Association Welcome Image"> -->
  </div>
