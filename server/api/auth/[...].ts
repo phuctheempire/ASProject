@@ -1,8 +1,8 @@
 // file: ~/server/api/auth/[...].ts
 import { NuxtAuthHandler } from '#auth'
-import GithubProvider from 'next-auth/providers/github'
+// import GithubProvider from 'next-auth/providers/github'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import { PrismaAdapter } from '@next-auth/prisma-adapter'
+// import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { PrismaClient } from '@prisma/client'
 // import { compare } from 'bcrypt'
 // import { users } from '~~/db'
@@ -28,7 +28,7 @@ export default NuxtAuthHandler({
   pages:{
     signIn: '/login', 
   },
-
+  secret: 'my-superb-secret',
   // adapter: PrismaAdapter(prisma),
   session:{
     strategy: 'jwt',
@@ -81,10 +81,10 @@ export default NuxtAuthHandler({
         })
 
         if(!user) {
-          throw createError({
-            statusCode: 403,
-            statusMessage: "Credentials wrong",
-          })
+          // throw createError({
+          //   statusCode: 403,
+          //   statusMessage: "Credentials wrong",
+          // })
           return null
 
         }
@@ -92,10 +92,10 @@ export default NuxtAuthHandler({
         const isPasswordValid = (user.password === credentials.password)
 
         if (!isPasswordValid) {
-          throw createError({
-            statusCode: 403,
-            statusMessage: "Wrong password",
-          })
+          // throw createError({
+          //   statusCode: 403,
+          //   statusMessage: "Wrong password",
+          // })
           return null
         }
         console.log(credentials)

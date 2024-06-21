@@ -1,27 +1,17 @@
 <script setup>
- 
+
+const actualites = await useFetch('/api/content/article')
+const evenements = await useFetch('/api/content/evenement')
+
+const allActualites = actualites.data._value
+const allEvenements = evenements.data._value
+
+
 </script>
 
 
 <template>
  <div>
- <nav>
- <!-- <ul class="sport-list">
- <li><nuxt-link to="/badminton">Badminton</nuxt-link></li>
- <li><nuxt-link to="/basket">Basket</nuxt-link></li>
- <li><nuxt-link to="/cheer">Cheerleading</nuxt-link></li>
- <li><nuxt-link to="/foot">Football</nuxt-link></li>
- <li><nuxt-link to="/handball">Handball</nuxt-link></li>
- <li><nuxt-link to="/natation">Natation</nuxt-link></li>
- <li><nuxt-link to="/rugby">Rugby</nuxt-link></li>
- <li><nuxt-link to="/tennis">Tennis</nuxt-link></li>
- <li><nuxt-link to="/ultimate">Ultimate</nuxt-link></li>
- <li><nuxt-link to="/volley">Volley</nuxt-link></li>
- <li><nuxt-link to="/aviron">Aviron</nuxt-link></li>
- <li><nuxt-link to="/running">Running</nuxt-link></li>
- <li><nuxt-link to="/responsables">Responsables</nuxt-link></li>
- </ul> -->
- </nav>
  <h1 class="welcome-message">Bienvenue sur le site de l'Association Sportive !</h1>
  <div class="welcome-image">
  <!-- <img src="/public/img/sport.png" alt="Sports Association Welcome Image"> -->
@@ -29,29 +19,37 @@
  <section class="news">
  <h2>Actualités</h2>
  <ul>
- <li>Nouvelle saison de football commence le 1er septembre</li>
- <li>Stage de basket cet été</li>
- <li>Équipe de tennis gagne le tournoi régional</li>
+  <li v-for=" actu in allActualites">
+    <div>
+      <strong><h3>{{ actu.title }}</h3></strong>
+      <p>{{ actu.description }}</p>
+    </div>
+  </li>
  </ul>
  </section>
 
  <section class="events">
  <h2>Événements à venir</h2>
- <ul>
- <li>Tournoi de football le 15 juillet</li>
- <li>Match de basket amical le 20 juillet</li>
- <li>Compétition d'aviron le 25 juillet</li>
+  <div>
+    <ul>
+  <li v-for=" event in allEvenements">
+    <div>
+      <strong><h3>{{ event.title }}</h3></strong>
+      <p>{{ event.plan }}</p>
+    </div>
+  </li>
  </ul>
+  </div>
  </section>
 
- <section class="results">
+ <!-- <section class="results">
  <h2>Résultats sportifs des compétitions</h2>
  <ul>
  <li>Football : Victoire 3-1 contre l'équipe locale</li>
  <li>Basket : Défaite 75-80 en finale</li>
  <li>Tennis : Victoire au tournoi régional</li>
  </ul>
- </section>
+ </section> -->
  </div>
 </template>
 

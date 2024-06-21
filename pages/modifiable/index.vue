@@ -244,7 +244,7 @@
 
 <script setup>
 import { ref } from 'vue';
-
+definePageMeta({ middleware: 'verify' })
 
 const {data} = useAuth()
 const user = data._object['$sauth:data'].user
