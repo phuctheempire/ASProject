@@ -14,7 +14,7 @@
 definePageMeta({
   // auth:{
   //     unauthentiacatedOnly: true,
-  //     navigateAuthenticatedTo: '/login/protected',
+  //     navigateAuthenticatedTo: '/',
   // },
   middleware: 'authen',
 })
