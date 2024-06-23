@@ -75,7 +75,11 @@ export default NuxtAuthHandler({
       async authorize(credentials: any){
         // 
         const user = await prisma.users.findUnique(
-          {
+        {
+          select: {
+            username: true,
+            password: true,
+          },
           where: {username: credentials.username }
         }
       )
