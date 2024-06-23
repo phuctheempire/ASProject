@@ -26,7 +26,7 @@ export default NuxtAuthHandler({
   pages:{
     signIn: '/login', 
   },
-  secret: 'my-superb-secret',
+  // secret: 'my-superb-secret',
   // adapter: PrismaAdapter(prisma),
   session:{
     strategy: 'jwt',
