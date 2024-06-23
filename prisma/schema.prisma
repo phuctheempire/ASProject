@@ -13,20 +13,22 @@ datasource db {
 
 model users {
   id                Int                 @id @default(autoincrement()) 
-  username          String              @unique(map: "name") 
+  username          String             
   password          String  
   role              String              @default("responsable")        
-  sport             sport[]             @relation("sport-acc")
-
+  sport_id          Int
+  sport             sport               @relation("sport-users",fields: [sport_id], references: [id], onDelete: Cascade)          
+  name              String              
+  email             String  
+  image             String?
 }
+
 
 model sport {
   id                Int                 @id @default(autoincrement())
   name              String              
   city              String  
-  accid             Int
-  acc               users               @relation("sport-acc",fields: [accid], references: [id], onDelete: Cascade)
-  responsables      person[]            @relation("sport-respo")
+  user              users[]             @relation("sport-users")
   article           article[]           @relation("sport-article")
   evenement         evenement[]         @relation("sport-evenement")
   plan              plan[]              @relation("sport-plan")
@@ -59,13 +61,4 @@ model evenement {
   categoryid        Int
   category          sport               @relation("sport-evenement",fields: [categoryid], references: [id], onDelete: Cascade)   
   plan              String?             
-}
-
-model person {
-  id                Int                 @id @default(autoincrement())
-  name              String              
-  email             String  
-  image             String?
-  sportid           Int?
-  sport             sport?               @relation("sport-respo",fields: [sportid], references: [id], onDelete: Cascade)   
 }
