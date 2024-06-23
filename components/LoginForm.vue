@@ -67,6 +67,8 @@ const password = ref('')
 const wrongPassword = ref(false)
 
 const handleSubmit = async () => {
+  console.log('username', username.value)
+  console.log('password', password.value)
   try {
     wrongPassword.value = false
     await signIn('credentials', { username: username.value, password: password.value })

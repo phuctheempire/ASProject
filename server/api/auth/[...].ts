@@ -22,8 +22,6 @@ const prisma = new PrismaClient()
 //     },
 //   })
 // }
-
-
 export default NuxtAuthHandler({
   pages:{
     signIn: '/login', 
@@ -76,9 +74,11 @@ export default NuxtAuthHandler({
       name: 'Credentials',
       async authorize(credentials: any){
         // 
-        const user = await prisma.users.findUnique({
+        const user = await prisma.users.findUnique(
+          {
           where: {username: credentials.username }
-        })
+        }
+      )
 
         if(!user) {
           // throw createError({

@@ -14,7 +14,7 @@
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/modifiable"
+            <NuxtLink v-if="loggedIn" to="/modifiable"
               class="block pl-3 pr-4 md:bg-transparent md:hover:text-purple-800 md:p-0 dark:text-white md:dark:text-purple-300 transition duration-500 ease-in-out transform hover:scale-110 hover:text-purple-900 dark:hover:text-purple-400"
               aria-current="page">
               Modifier
@@ -77,9 +77,9 @@
       <NuxtLink to="/"
         class="sidebar-link transition duration-500 ease-in-out transform hover:scale-110 hover:text-purple-200">Home
       </NuxtLink>
-      <NuxtLink to="/login/protected"
+      <NuxtLink v-if="loggedIn" to="/modifiable"
         class="sidebar-link transition duration-500 ease-in-out transform hover:scale-110 hover:text-purple-200">
-        Protected</NuxtLink>
+        Modifie</NuxtLink>
       <button v-if="loggedIn"
         class="sidebar-link transition duration-500 ease-in-out transform hover:scale-110 hover:text-purple-200"
         @click="signOut()">
