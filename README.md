@@ -1,75 +1,28 @@
-# Nuxt 3 Minimal Starter
+INSTALLATION
+Premierement, dans le repectoire root, on installe le projet en utilisant le script:
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
-
-## Setup
-
-Make sure to install the dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
 npm run dev
 
-# pnpm
-pnpm run dev
+AJOUT DE L'ENVIRONNEMENT:
 
-# yarn
-yarn dev
+On creer le fichier .env dans le repertoire racine. Dedans, on met:
 
-# bun
-bun run dev
-```
+DATABASE_URL="file:./dev.db"
+AUTH_ORIGIN="http://localhost:3000"
 
-## Production
+Apres l'installation, on travail sur le bdd
 
-Build the application for production:
+INTEGRATION DE BASE DE DONNEE
 
-```bash
-# npm
-npm run build
+On utilise prisma - sqlite. Il existe deja le bdd dans le projet. On l'integre:
 
-# pnpm
-pnpm run build
+npm run prisma:migrate:dev
+npm run prisma:migrate:generate
 
-# yarn
-yarn build
+CONSULTATION DE BASE DE DONNEE:
 
-# bun
-bun run build
-```
+npm run prisma:studio
 
-Locally preview production build:
+LANCEMENT DU PROJET SUR LOCALHOST:
 
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+npm run dev
