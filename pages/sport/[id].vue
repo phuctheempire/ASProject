@@ -43,6 +43,7 @@ const selectCity = (city) => {
                     <p><strong>Responsables:</strong></p>
                     <div v-for="(item) in selectedSport.user" :key="item.id" class="responsable-card">
                         <img v-bind:src="item.image" alt="Photo du responsable" class="responsable-photo">
+                        <!-- <p>{{ item.image }}</p> -->
                         <h3>{{ item.name }}</h3>
                         <p style="font-size: 15px; font-style: italic;">{{ item.email }}</p>
                     </div>
@@ -115,7 +116,7 @@ const selectCity = (city) => {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
+    max-width: 1200px; /* Increased the max-width */
     width: 100%;
     margin-bottom: 20px;
 }
@@ -221,5 +222,12 @@ const selectCity = (city) => {
     font-size: 0.7em;
     color: #4A0072;
     margin-top: 0;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .content-rectangle {
+        max-width: 95%;
+    }
 }
 </style>

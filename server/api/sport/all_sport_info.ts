@@ -5,10 +5,13 @@ const prisma = new PrismaClient()
 export default eventHandler( async event => {
 
     const query = await getQuery(event)
-    console.log(query)
+    console.log("Query: " + query.sport_id)
     // const runtimeConfig = useRuntimeConfig()
     const sport = await event.context.prisma.sport.findMany({
-        include: {
+        select: {
+            id: true,
+            name: true,
+            city: true,
             user: {
                 select:{
                     id: true,
@@ -22,11 +25,11 @@ export default eventHandler( async event => {
             plan:true,
         },
         where:{
-            name: query.name
+            id: parseInt(query.sport_id)
         }
 
-})
-console.log(sport)
+    })
+// console.log(sport)
     return sport
 
 })

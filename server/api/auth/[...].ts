@@ -76,10 +76,10 @@ export default NuxtAuthHandler({
         // 
         const user = await prisma.users.findUnique(
         {
-          select: {
-            username: true,
-            password: true,
-          },
+          // select: {
+          //   username: true,
+          //   password: true,
+          // },
           where: {username: credentials.username }
         }
       )

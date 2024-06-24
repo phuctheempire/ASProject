@@ -4,7 +4,7 @@ CREATE TABLE "users" (
     "username" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "role" TEXT NOT NULL DEFAULT 'responsable',
-    "sport_id" INTEGER NOT NULL,
+    "sport_id" INTEGER,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "image" TEXT,
@@ -24,7 +24,7 @@ CREATE TABLE "plan" (
     "date" TEXT NOT NULL,
     "time" TEXT NOT NULL,
     "lieu" TEXT NOT NULL,
-    "sportid" INTEGER NOT NULL,
+    "sportid" INTEGER,
     CONSTRAINT "plan_sportid_fkey" FOREIGN KEY ("sportid") REFERENCES "sport" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -32,7 +32,7 @@ CREATE TABLE "plan" (
 CREATE TABLE "article" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "title" TEXT NOT NULL,
-    "categoryid" INTEGER NOT NULL,
+    "categoryid" INTEGER,
     "description" TEXT NOT NULL,
     "image" TEXT NOT NULL,
     CONSTRAINT "article_categoryid_fkey" FOREIGN KEY ("categoryid") REFERENCES "sport" ("id") ON DELETE CASCADE ON UPDATE CASCADE
@@ -42,10 +42,13 @@ CREATE TABLE "article" (
 CREATE TABLE "evenement" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "title" TEXT NOT NULL,
-    "categoryid" INTEGER NOT NULL,
+    "categoryid" INTEGER,
     "plan" TEXT,
     CONSTRAINT "evenement_categoryid_fkey" FOREIGN KEY ("categoryid") REFERENCES "sport" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "name" ON "users"("username");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "sport_name_city_key" ON "sport"("name", "city");

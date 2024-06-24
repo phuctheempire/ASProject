@@ -1,5 +1,6 @@
 
 import { getServerSession } from '#auth'
+
 export default defineEventHandler(async (event) => {
     const body = await readBody(event)
 
@@ -9,7 +10,7 @@ export default defineEventHandler(async (event) => {
         return { message: "You are not authorized to perform this action" }
     }
     else{    
-        if ( session?.user?.id === body.id){
+        if ( session?.user?.role !== "president" && session?.user?.sport_id !== body.sport_id){
             return { message: "User not created" }
         } else {
             await event.context.prisma.article.delete({

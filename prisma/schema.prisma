@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,55 +7,52 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model users {
-  id                Int                @id @default(autoincrement()) 
-  username          String             @unique(map: "name")
-  password          String  
-  role              String              @default("responsable")        
-  sport_id          Int
-  sport             sport               @relation("sport-users",fields: [sport_id], references: [id], onDelete: Cascade)          
-  name              String              
-  email             String  
-  image             String?
+  id       Int     @id @default(autoincrement())
+  username String  @unique(map: "name")
+  password String
+  role     String  @default("responsable")
+  sport_id Int?
+  name     String
+  email    String
+  image    String?
+  sport    sport?  @relation("sport-users", fields: [sport_id], references: [id], onDelete: Cascade)
 }
-
 
 model sport {
-  id                Int                 @id @default(autoincrement())
-  name              String              
-  city              String  
-  user              users[]             @relation("sport-users")
-  article           article[]           @relation("sport-article")
-  evenement         evenement[]         @relation("sport-evenement")
-  plan              plan[]              @relation("sport-plan")
-  @@unique([name,city]) 
+  id        Int         @id @default(autoincrement())
+  name      String
+  city      String
+  article   article[]   @relation("sport-article")
+  evenement evenement[] @relation("sport-evenement")
+  plan      plan[]      @relation("sport-plan")
+  user      users[]     @relation("sport-users")
+
+  @@unique([name, city])
 }
 
-
 model plan {
-  id                Int                 @id @default(autoincrement())
-  date              String              
-  time              String  
-  lieu              String  
-  sportid           Int
-  sport             sport               @relation("sport-plan",fields: [sportid], references: [id], onDelete: Cascade)   
-  
+  id      Int    @id @default(autoincrement())
+  date    String
+  time    String
+  lieu    String
+  sportid Int?
+  sport   sport? @relation("sport-plan", fields: [sportid], references: [id], onDelete: Cascade)
 }
 
 model article {
-  id                Int                 @id @default(autoincrement())
-  title             String
-  categoryid        Int
-  category          sport               @relation("sport-article",fields: [categoryid], references: [id], onDelete: Cascade)   
-  description       String
-  image             String               
+  id          Int    @id @default(autoincrement())
+  title       String
+  categoryid  Int?
+  description String
+  image       String
+  category    sport? @relation("sport-article", fields: [categoryid], references: [id], onDelete: Cascade)
 }
 
 model evenement {
-  id                Int                 @id @default(autoincrement())
-  title             String
-  categoryid        Int
-  category          sport               @relation("sport-evenement",fields: [categoryid], references: [id], onDelete: Cascade)   
-  plan              String?             
+  id         Int     @id @default(autoincrement())
+  title      String
+  categoryid Int?
+  plan       String?
+  category   sport?  @relation("sport-evenement", fields: [categoryid], references: [id], onDelete: Cascade)
 }
